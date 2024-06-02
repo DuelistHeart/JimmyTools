@@ -3,6 +3,9 @@ package com.duelco.managers;
 import com.duelco.obj.SkinFlipperData;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import me.shedaniel.autoconfig.ConfigData;
+import me.shedaniel.autoconfig.annotation.Config;
+import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import net.fabricmc.loader.api.FabricLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,10 +15,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class SkinFlipperDataManager {
+@Config(name = "lom-skin-flipper")
+public class SkinFlipperDataManager implements ConfigData {
     public static final Logger LOGGER = LoggerFactory.getLogger("skin-flipper-data-manager");
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final File CONFIG_FILE = new File(FabricLoader.getInstance().getConfigDir().toFile(), "skin_flipper_data.json");
+    @ConfigEntry.Gui.TransitiveObject
     private SkinFlipperData skinFlipperData;
 
     public SkinFlipperDataManager() {

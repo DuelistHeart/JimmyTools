@@ -2,6 +2,9 @@ package com.duelco;
 
 import com.duelco.managers.SkinFlipperDataManager;
 import com.duelco.obj.SkinFlipperData;
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
+import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -23,6 +26,8 @@ public class LoMSkinFlipperClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
+		AutoConfig.register(SkinFlipperDataManager.class, GsonConfigSerializer::new);
+
 		keyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
 				"key.duelco.flipskin", // The translation key of the keybinding's name
 				InputUtil.Type.KEYSYM, // The type of the keybinding, KEYSYM for keyboard, MOUSE for mouse.

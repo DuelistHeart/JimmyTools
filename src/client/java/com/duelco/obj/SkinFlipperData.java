@@ -1,8 +1,13 @@
 package com.duelco.obj;
 
+import me.shedaniel.autoconfig.annotation.ConfigEntry;
+
 public class SkinFlipperData {
+    @ConfigEntry.Gui.Tooltip
     private boolean isSkinFlipped;
+    @ConfigEntry.Gui.Tooltip
     private String changingSkin;
+    @ConfigEntry.Gui.Tooltip()
     private String constantSkin;
 
     public SkinFlipperData() {

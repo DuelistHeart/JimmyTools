@@ -20,6 +20,9 @@
 		],
 		"client": [
 			"com.duelco.LoMSkinFlipperClient"
+		],
+		"modmenu": [
+			"com.duelco.integrations.ModMenuIntegration"
 		]
 	},
 	"mixins": [
