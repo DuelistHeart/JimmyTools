@@ -1,10 +1,8 @@
 package com.duelco;
 
-import com.duelco.managers.SkinFlipperDataManager;
-import com.duelco.obj.SkinFlipperData;
+import com.duelco.managers.SkinFlipperManager;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
-import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -12,21 +10,19 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.server.command.CommandManager;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class LoMSkinFlipperClient implements ClientModInitializer {
 	private static KeyBinding keyBinding;
-	private static SkinFlipperDataManager skinFlipperDataManager = new SkinFlipperDataManager();
+	private SkinFlipperManager skinFlipperDataManager;
 	public static final Logger LOGGER = LoggerFactory.getLogger("lom-skin-flipper-client");
 
 	@Override
 	public void onInitializeClient() {
-		AutoConfig.register(SkinFlipperDataManager.class, GsonConfigSerializer::new);
+		AutoConfig.register(SkinFlipperConfig.class, GsonConfigSerializer::new);
+		this.skinFlipperDataManager = new SkinFlipperManager();
 
 		keyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
 				"key.duelco.flipskin", // The translation key of the keybinding's name
@@ -47,6 +43,7 @@ public class LoMSkinFlipperClient implements ClientModInitializer {
 					String newSkin = skinFlipperDataManager.flipSkin(getPlayerSkin(client));
 					LOGGER.info("The new player skin is " + newSkin);
 					client.player.networkHandler.sendChatCommand("skin " + newSkin);
+//					client.player.networkHandler.sendChatCommand("skin " + newSkin);
 					LOGGER.info("The command is is " + "/skin " + newSkin);
 				} else {
 					LOGGER.debug("Player is null, skipping command execution.");

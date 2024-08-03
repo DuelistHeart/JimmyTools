@@ -1,6 +1,6 @@
 package com.duelco.integrations;
 
-import com.duelco.managers.SkinFlipperDataManager;
+import com.duelco.SkinFlipperConfig;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import me.shedaniel.autoconfig.AutoConfig;
@@ -8,6 +8,6 @@ import me.shedaniel.autoconfig.AutoConfig;
 public class ModMenuIntegration implements ModMenuApi {
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return parent -> AutoConfig.getConfigScreen(SkinFlipperDataManager.class, parent).get();
+        return parent -> AutoConfig.getConfigScreen(SkinFlipperConfig.class, parent).get();
     }
 }
