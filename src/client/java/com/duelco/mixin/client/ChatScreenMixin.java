@@ -15,17 +15,18 @@ public class ChatScreenMixin {
     MinecraftClient client = MinecraftClient.getInstance();
 
     @Inject(at = @At("HEAD"), method = "sendMessage", cancellable = true)
-    protected void checkMessage(String chatText, boolean addToHistory, CallbackInfo info) {
+    protected void checkSlashMeMessage(String chatText, boolean addToHistory, CallbackInfo info) {
 //        SlashMeContinuesHandler.handleChatMessage(chatText, MinecraftClient.getInstance().player);
-        List<String> slashMeSplit = SlashMeContinuesHandler.handleChatMessage(chatText);
+        if (chatText.startsWith("/me")) {
+            List<String> slashMeSplit = SlashMeContinuesHandler.handleChatMessage(chatText);
 
-        if (slashMeSplit.size() > 1) {
-            for (String message: slashMeSplit) {
-                client.player.networkHandler.sendChatCommand("me " + message);
+            if (slashMeSplit.size() > 1) {
+                for (String message : slashMeSplit) {
+                    client.player.networkHandler.sendChatCommand("me " + message);
+                }
+
+                info.cancel();
             }
-
-            info.cancel();
         }
     }
-
 }
