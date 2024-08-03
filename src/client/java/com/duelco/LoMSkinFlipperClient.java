@@ -1,6 +1,8 @@
 package com.duelco;
 
+import com.duelco.config.SkinFlipperConfig;
 import com.duelco.handlers.SkinFlipperHandler;
+import com.duelco.handlers.SlashMeContinuesHandler;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ClientModInitializer;
@@ -20,6 +22,7 @@ public class LoMSkinFlipperClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		AutoConfig.register(SkinFlipperConfig.class, GsonConfigSerializer::new);
 		registerKeybinds();
+		SlashMeContinuesHandler.register();
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (skinFlipperToggleKeybind.wasPressed()) {

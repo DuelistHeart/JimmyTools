@@ -1,6 +1,6 @@
 package com.duelco.managers;
 
-import com.duelco.SkinFlipperConfig;
+import com.duelco.config.SkinFlipperConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

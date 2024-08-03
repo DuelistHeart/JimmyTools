@@ -1,6 +1,6 @@
 package com.duelco.integrations;
 
-import com.duelco.SkinFlipperConfig;
+import com.duelco.config.SkinFlipperConfig;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import me.shedaniel.autoconfig.AutoConfig;
