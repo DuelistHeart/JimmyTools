@@ -45,7 +45,6 @@ public class TitleMixin {
 
             if (client.player != null) {
                 if (lvlUpMsg != null && !Objects.equals(lvlUpMsg.getString(), "[]") && !pastLvlUpMsgs.contains(lvlUpMsg)) {
-                    client.player.sendMessage(Text.of("Subtitle: " + lvlUpMsg.getString()), false);
                     client.player.sendMessage(lvlUpMsg, false);
                     pastLvlUpMsgs.add(lvlUpMsg);
                 }
