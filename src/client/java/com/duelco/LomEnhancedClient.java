@@ -1,9 +1,12 @@
 package com.duelco;
 
+import com.duelco.config.LevelUpMessageConfig;
 import com.duelco.config.ModConfig;
+import com.duelco.config.SkinFlipperConfig;
 import com.duelco.handlers.SkinFlipperHandler;
 import com.duelco.handlers.SlashMeContinuesHandler;
 import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 import net.fabricmc.api.ClientModInitializer;
@@ -18,6 +21,7 @@ import org.slf4j.LoggerFactory;
 public class LomEnhancedClient implements ClientModInitializer {
 	private static KeyBinding skinFlipperToggleKeybind;
 	public static final Logger LOGGER = LoggerFactory.getLogger("lom-enhanced-client");
+	public static ModConfig config;
 
 	@Override
 	public void onInitializeClient() {
@@ -25,6 +29,9 @@ public class LomEnhancedClient implements ClientModInitializer {
 				ModConfig.class,
 				PartitioningSerializer.wrap(JanksonConfigSerializer::new)
 		);
+
+		config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+
 //		AutoConfig.register(LevelUpMessageConfig.class, GsonConfigSerializer::new);
 //		AutoConfig.register(SkinFlipperConfig.class, GsonConfigSerializer::new);
 		registerKeybinds();

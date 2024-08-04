@@ -8,9 +8,9 @@ import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 public class ModConfig extends PartitioningSerializer.GlobalData {
     @ConfigEntry.Category("skinFlipperConfig")
     @ConfigEntry.Gui.TransitiveObject
-    SkinFlipperConfig skinFlipperConfig = new SkinFlipperConfig();
+    public SkinFlipperConfig skinFlipperConfig = new SkinFlipperConfig();
 
     @ConfigEntry.Category("levelUpMessageConfig")
     @ConfigEntry.Gui.TransitiveObject
-    LevelUpMessageConfig levelUpMessageConfig = new LevelUpMessageConfig();
+    public LevelUpMessageConfig levelUpMessageConfig = new LevelUpMessageConfig();
 }

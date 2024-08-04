@@ -1,6 +1,8 @@
 package com.duelco.mixin.client;
 
+import com.duelco.LomEnhancedClient;
 import com.duelco.config.LevelUpMessageConfig;
+import com.duelco.config.ModConfig;
 import com.duelco.config.SkinFlipperConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.client.MinecraftClient;
@@ -33,9 +35,9 @@ public class TitleMixin {
     @Shadow private Text text;
     @Inject(at = @At("HEAD"), method = "apply(Lnet/minecraft/network/listener/ClientPlayPacketListener;)V")
     private void onTitle(ClientPlayPacketListener clientPlayPacketListener, CallbackInfo ci) {
-        LevelUpMessageConfig config = AutoConfig.getConfigHolder(LevelUpMessageConfig.class).getConfig();
+        LOGGER.info("LevelUp message is {}", LomEnhancedClient.config.levelUpMessageConfig.areMessagesEnabled());
 
-        if (config.areMessagesEnabled) {
+        if (LomEnhancedClient.config.levelUpMessageConfig.areMessagesEnabled()) {
             LOGGER.info("receiving title: {}", text);
             MinecraftClient client = MinecraftClient.getInstance();
 

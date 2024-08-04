@@ -1,9 +1,0 @@
-{
-  "text.autoconfig.lom-enhanced.title": "LoM2 Skin Flipper Configuration",
-  "text.autoconfig.lom-enhanced.option.skinFlipperData.isSkinFlipped": "Is your skin currently \"flipped\"",
-  "text.autoconfig.lom-enhanced.option.skinFlipperData.isSkinFlipped.@Tooltip": "Determines whether you are in the dynamic skin or \"flipped\" to the constant skin.",
-  "text.autoconfig.lom-enhanced.option.skinFlipperData.changingSkin": "Dynamic Skin",
-  "text.autoconfig.lom-enhanced.option.skinFlipperData.changingSkin.@Tooltip": "The skin url for the skin that is expected to change.",
-  "text.autoconfig.lom-enhanced.option.skinFlipperData.constantSkin": "Constant Skin",
-  "text.autoconfig.lom-enhanced.option.skinFlipperData.constantSkin.@Tooltip": "The skin url for the skin that should stay the same."
-}

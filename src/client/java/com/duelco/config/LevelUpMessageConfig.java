@@ -16,8 +16,4 @@ public class LevelUpMessageConfig implements ConfigData {
     public boolean areMessagesEnabled() {
         return areMessagesEnabled;
     }
-
-    public void setAreMessagesEnabled(boolean areMessagesEnabled) {
-        this.areMessagesEnabled = areMessagesEnabled;
-    }
 }
