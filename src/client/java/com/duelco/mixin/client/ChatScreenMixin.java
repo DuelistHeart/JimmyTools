@@ -3,6 +3,8 @@ package com.duelco.mixin.client;
 import com.duelco.handlers.SlashMeContinuesHandler;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ChatScreen;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -20,11 +22,13 @@ public class ChatScreenMixin {
         if (chatText.startsWith("/me")) {
             List<String> slashMeSplit = SlashMeContinuesHandler.handleChatMessage(chatText);
 
-            if (slashMeSplit.size() > 1) {
+            if (slashMeSplit.size() > 2) {
+                client.player.sendMessage(Text.literal("That message is a bit too long, it is recommended to shorten it.").formatted(Formatting.RED));
+                info.cancel();
+            } else if (slashMeSplit.size() > 1) {
                 for (String message : slashMeSplit) {
                     client.player.networkHandler.sendChatCommand("me " + message);
                 }
-
                 info.cancel();
             }
         }
