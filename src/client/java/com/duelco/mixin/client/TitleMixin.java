@@ -1,5 +1,8 @@
 package com.duelco.mixin.client;
 
+import com.duelco.config.LevelUpMessageConfig;
+import com.duelco.config.SkinFlipperConfig;
+import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.s2c.play.SubtitleS2CPacket;
@@ -30,16 +33,20 @@ public class TitleMixin {
     @Shadow private Text text;
     @Inject(at = @At("HEAD"), method = "apply(Lnet/minecraft/network/listener/ClientPlayPacketListener;)V")
     private void onTitle(ClientPlayPacketListener clientPlayPacketListener, CallbackInfo ci) {
-        LOGGER.info("receiving title: {}", text);
-        MinecraftClient client = MinecraftClient.getInstance();
+        LevelUpMessageConfig config = AutoConfig.getConfigHolder(LevelUpMessageConfig.class).getConfig();
 
-        Text lvlUpMsg = this.getLevelUpMessage(text.getString());
+        if (config.areMessagesEnabled) {
+            LOGGER.info("receiving title: {}", text);
+            MinecraftClient client = MinecraftClient.getInstance();
 
-        if (client.player != null) {
-            if (lvlUpMsg != null && !Objects.equals(lvlUpMsg.getString(), "[]") && !pastLvlUpMsgs.contains(lvlUpMsg)) {
-                client.player.sendMessage(Text.of("Subtitle: " + lvlUpMsg.getString()), false);
-                client.player.sendMessage(lvlUpMsg, false);
-                pastLvlUpMsgs.add(lvlUpMsg);
+            Text lvlUpMsg = this.getLevelUpMessage(text.getString());
+
+            if (client.player != null) {
+                if (lvlUpMsg != null && !Objects.equals(lvlUpMsg.getString(), "[]") && !pastLvlUpMsgs.contains(lvlUpMsg)) {
+                    client.player.sendMessage(Text.of("Subtitle: " + lvlUpMsg.getString()), false);
+                    client.player.sendMessage(lvlUpMsg, false);
+                    pastLvlUpMsgs.add(lvlUpMsg);
+                }
             }
         }
     }

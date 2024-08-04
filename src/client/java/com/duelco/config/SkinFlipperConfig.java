@@ -6,7 +6,7 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Config(name = "lom-skin-flipper")
+@Config(name = "skinFlipperConfig")
 public class SkinFlipperConfig implements ConfigData {
     public static final Logger LOGGER = LoggerFactory.getLogger("skin-flipper-config");
 

@@ -1,9 +1,9 @@
 {
 	"schemaVersion": 1,
-	"id": "lom-skin-flipper",
+	"id": "lom-enhanced",
 	"version": "${version}",
-	"name": "LoM Skin Flipper",
-	"description": "A simple mod for flipping a skin from one skin to another. Designed for LoM2.",
+	"name": "LoM QoL Pack",
+	"description": "A mod full of QoL features for LoM.",
 	"authors": [
 		"DuelistHeart"
 	],
@@ -12,23 +12,23 @@
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/lom-skin-flipper/icon.png",
+	"icon": "assets/lom-enhanced/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-          "com.duelco.LoMSkinFlipper"
+			"com.duelco.LomEnhanced"
 		],
 		"client": [
-			"com.duelco.LoMSkinFlipperClient"
+			"com.duelco.LomEnhancedClient"
 		],
 		"modmenu": [
 			"com.duelco.integrations.ModMenuIntegration"
 		]
 	},
 	"mixins": [
-		"lom-skin-flipper.mixins.json",
+		"lom-enhanced.mixins.json",
 		{
-			"config": "lom-skin-flipper.client.mixins.json",
+			"config": "lom-enhanced.client.mixins.json",
 			"environment": "client"
 		}
 	],

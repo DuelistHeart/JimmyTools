@@ -1,10 +1,11 @@
 package com.duelco;
 
-import com.duelco.config.SkinFlipperConfig;
+import com.duelco.config.ModConfig;
 import com.duelco.handlers.SkinFlipperHandler;
 import com.duelco.handlers.SlashMeContinuesHandler;
 import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
+import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
+import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -14,13 +15,18 @@ import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class LoMSkinFlipperClient implements ClientModInitializer {
+public class LomEnhancedClient implements ClientModInitializer {
 	private static KeyBinding skinFlipperToggleKeybind;
-	public static final Logger LOGGER = LoggerFactory.getLogger("lom-skin-flipper-client");
+	public static final Logger LOGGER = LoggerFactory.getLogger("lom-enhanced-client");
 
 	@Override
 	public void onInitializeClient() {
-		AutoConfig.register(SkinFlipperConfig.class, GsonConfigSerializer::new);
+		AutoConfig.register(
+				ModConfig.class,
+				PartitioningSerializer.wrap(JanksonConfigSerializer::new)
+		);
+//		AutoConfig.register(LevelUpMessageConfig.class, GsonConfigSerializer::new);
+//		AutoConfig.register(SkinFlipperConfig.class, GsonConfigSerializer::new);
 		registerKeybinds();
 		SlashMeContinuesHandler.register();
 
