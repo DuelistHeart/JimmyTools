@@ -11,6 +11,10 @@ base {
 }
 
 repositories {
+
+	maven {
+		url 'https://maven.wispforest.io/releases/'
+	}
 	maven {
 		name = "Mod Menu"
 		url = "https://maven.terraformersmc.com/"
@@ -18,6 +22,10 @@ repositories {
 	maven {
 		name = "Cloth Config"
 		url = "https://maven.shedaniel.me/"
+	}
+
+	maven {
+		url = "https://pkgs.dev.azure.com/djtheredstoner/DevAuth/_packaging/public/maven/v1"
 	}
 }
 
@@ -32,7 +40,8 @@ loom {
 	}
 
 }
-
+repositories {
+}
 dependencies {
 	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -45,6 +54,18 @@ dependencies {
 	// Cloth/ModMenu
 	modImplementation "me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}"
 	modImplementation "com.terraformersmc:modmenu:${project.mod_menu_version}"
+
+	// owo-lib
+	modImplementation "io.wispforest:owo-lib:${project.owo_version}"
+	include "io.wispforest:owo-sentinel:${project.owo_version}"
+
+	// moduleName is based on your mod loader and minecraft version, see the table above
+	// version is the DevAuth version you are adding, check releases on GitHub or the badge above
+	// With loom use the modRuntimeOnly configuration
+	// With archloom and the forge-legacy module use the runtimeOnly configuration to avoid warnings
+	// With ForgeGradle 5 or NeoGradle, use the runtimeOnly configuration
+	// With ForgeGradle 2, use the implementation configuration as runtimeOnly appears to be broken
+	modRuntimeOnly("me.djtheredstoner:DevAuth-fabric:1.2.1");
 	
 }
 

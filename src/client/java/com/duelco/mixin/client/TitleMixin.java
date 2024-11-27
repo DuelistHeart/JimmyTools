@@ -1,10 +1,6 @@
 package com.duelco.mixin.client;
 
 import com.duelco.LomEnhancedClient;
-import com.duelco.config.LevelUpMessageConfig;
-import com.duelco.config.ModConfig;
-import com.duelco.config.SkinFlipperConfig;
-import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.s2c.play.SubtitleS2CPacket;
@@ -29,7 +25,6 @@ import java.util.regex.Pattern;
 @Mixin(SubtitleS2CPacket.class)
 public class TitleMixin {
     private static final Logger LOGGER = LoggerFactory.getLogger("title-mixin");
-    private static final List<Text> pastLvlUpMsgs = new ArrayList<>();
 
     @Final
     @Shadow private Text text;
@@ -44,9 +39,8 @@ public class TitleMixin {
             Text lvlUpMsg = this.getLevelUpMessage(text.getString());
 
             if (client.player != null) {
-                if (lvlUpMsg != null && !Objects.equals(lvlUpMsg.getString(), "[]") && !pastLvlUpMsgs.contains(lvlUpMsg)) {
+                if (lvlUpMsg != null && !Objects.equals(lvlUpMsg.getString(), "[]")) {
                     client.player.sendMessage(lvlUpMsg, false);
-                    pastLvlUpMsgs.add(lvlUpMsg);
                 }
             }
         }

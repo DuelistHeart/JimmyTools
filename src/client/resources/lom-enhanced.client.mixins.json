@@ -3,13 +3,13 @@
   "package": "com.duelco.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "ChatScreenMixin",
-    "TitleMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "mixins": [
-    "DistrictIdentifierMixin"
+    "DistrictIdentifierMixin",
+    "ChatScreenMixin",
+    "TitleMixin"
   ]
 }

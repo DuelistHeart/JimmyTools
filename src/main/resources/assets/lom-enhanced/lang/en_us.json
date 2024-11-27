@@ -9,5 +9,10 @@
   "text.autoconfig.lom-enhanced.option.skinFlipperConfig.constantSkin": "Constant Skin",
   "text.autoconfig.lom-enhanced.option.skinFlipperConfig.constantSkin.@Tooltip": "The skin url for the skin that should stay the same.",
   "text.autoconfig.lom-enhanced.option.levelUpMessageConfig.areMessagesEnabled": "Level Up Messages Enabled",
-  "text.autoconfig.lom-enhanced.option.levelUpMessageConfig.areMessagesEnabled.@Tooltip": "Determines if level up messages are sent in the chat."
+  "text.autoconfig.lom-enhanced.option.levelUpMessageConfig.areMessagesEnabled.@Tooltip": "Determines if level up messages are sent in the chat.",
+  "category.duelco.skinflipper": "DuelUtils SkinFlipper",
+  "key.duelco.flipskin": "Flip Skin",
+  "category.duelco.screens": "DuelUtils Screens",
+  "category.duelco.bingo_options": "DuelUtils Bingo",
+  "key.duelco.bingo_screen": "Open Bingo Screen"
 }

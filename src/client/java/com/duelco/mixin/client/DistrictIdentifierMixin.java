@@ -1,5 +1,6 @@
 package com.duelco.mixin.client;
 
+import com.duelco.LomEnhancedClient;
 import com.duelco.handlers.TabListHandler;
 import net.minecraft.network.packet.s2c.play.PlayerListHeaderS2CPacket;
 import net.minecraft.text.Text;
@@ -19,7 +20,7 @@ public class DistrictIdentifierMixin {
         if (footer.getString().contains("(")) {
             if (footer.getString().indexOf("(") + 1 > 0 && footer.getString().indexOf(")") > 0) {
                 String district = footer.getString().substring(footer.getString().indexOf("(") + 1, footer.getString().indexOf(")"));
-                System.out.println("District: " + district);
+//                System.out.println("District: " + district);
 
                 // Store or manipulate the footer value as needed
                 // For example, store it in a static variable for later use
@@ -28,7 +29,6 @@ public class DistrictIdentifierMixin {
         } else {
             if (footer.getString().indexOf("(") + 1 > 0 && footer.getString().indexOf(")") > 0) {
                 String district = footer.getString().split("\n")[0];
-                System.out.println("District: " + district);
 
                 // Store or manipulate the footer value as needed
                 // For example, store it in a static variable for later use

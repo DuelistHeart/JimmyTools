@@ -1,5 +1,6 @@
 package com.duelco.mixin.client;
 
+import com.duelco.LomEnhancedClient;
 import com.duelco.handlers.SlashMeContinuesHandler;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ChatScreen;
@@ -32,5 +33,11 @@ public class ChatScreenMixin {
                 info.cancel();
             }
         }
+    }
+
+    @Inject(at = @At("HEAD"), method = "sendMessage", cancellable = true)
+    protected void checkForCharacterChange(String chatText, boolean addToHistory, CallbackInfo info) {
+
+        System.out.println("Chat text: " + chatText);
     }
 }
