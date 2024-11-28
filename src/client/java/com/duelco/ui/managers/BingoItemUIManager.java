@@ -24,7 +24,7 @@ public class BingoItemUIManager {
 
         if (bingoItem.isFreeSpace()) {
             sampleSlot.child(
-                    Components.texture(Identifier.of("mymod", "owo_ui/free_space.png"), 1, 1, 256, 256)
+                    Components.texture(Identifier.of("duelutils", "ui/free_space.png"), 1, 1, 256, 256)
                             .sizing(Sizing.fixed(20))
                             .zIndex(20)
             );
@@ -42,7 +42,7 @@ public class BingoItemUIManager {
 
         if (bingoItem.isMarked()) {
             sampleSlot.child(
-                    Components.texture(Identifier.of("mymod", "owo_ui/marker.png"), 1, 1, 256, 256)
+                    Components.texture(Identifier.of("duelutils", "ui/marker.png"), 1, 1, 256, 256)
                             .sizing(Sizing.fixed(20))
             );
         }
