@@ -53,7 +53,7 @@ public class BingoPossibleItemsList {
         Random random = new Random();
 
         while (itemsForBingoCard.size() < MAX_CARD_SIZE) {
-            int randIndex = random.nextInt(MAX_CARD_SIZE);
+            int randIndex = random.nextInt(items.size());
             BingoItem randItem = items.get(randIndex);
 
             if (!claimedItems.contains(randItem)) {
