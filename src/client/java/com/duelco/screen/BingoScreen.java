@@ -35,14 +35,14 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
                 .surface(Surface.VANILLA_TRANSLUCENT)
                 .alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
 
-        FlowLayout bingoCardsLayout = (FlowLayout) Containers.horizontalFlow(Sizing.fill(), Sizing.fill())
+        FlowLayout bingoCardsLayout = (FlowLayout) Containers.horizontalFlow(Sizing.fill(), Sizing.fixed(220))
                 .alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
 
         for (BingoCard bingoCard : bingoCards) {
             bingoCardsLayout.child(bingoCard.buildBingoCardComponent());
         }
 
-        FlowLayout buttonGroup = (FlowLayout) Containers.horizontalFlow(Sizing.fill(), Sizing.fixed(50))
+        FlowLayout buttonGroup = (FlowLayout) Containers.horizontalFlow(Sizing.fill(), Sizing.fixed(22))
                 .horizontalAlignment(HorizontalAlignment.CENTER);
 
         buttonGroup.child(
@@ -73,6 +73,8 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
         );
 
         rootComponent.child(
+                Components.label(Text.of("Bingo Screen"))
+        ).child(
                 bingoCardsLayout
         ).child(
                 buttonGroup
