@@ -52,38 +52,6 @@ public class LomEnhancedClient implements ClientModInitializer {
 				client.setScreen(new BingoScreen());
 			}
 		});
-
-		ClientTickEvents.END_CLIENT_TICK.register(client -> {
-			if (client.player != null) {
-				ScreenHandler container = client.player.currentScreenHandler;
-				boolean execution = false;
-
-				try {
-					if (!execution && container.slots.getFirst().getStack().getTooltip(Item.TooltipContext.DEFAULT, client.player, TooltipType.BASIC).get(1).getSiblings().get(0).contains(Text.of("Select character."))) {
-						for (int i = 0; i < container.slots.size(); i++) {
-							ItemStack itemOption = container.slots.get(i).getStack();
-
-							if (itemOption.getTooltip(Item.TooltipContext.DEFAULT, client.player, TooltipType.BASIC).get(1).getSiblings().get(0).contains(Text.of("Select character."))) {
-								System.out.println(itemOption.getName().toString());
-							}
-						}
-						System.out.println("CHARACTER SCREEN!!!!!!!!!!!!!");
-						client.player.closeScreen();
-					}
-				} catch (IndexOutOfBoundsException e) {
-
-				}
-			}
-		});
-
-
-		ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> {
-			// Add any logout-specific code here
-		});
-
-		ClientLifecycleEvents.CLIENT_STOPPING.register(client -> {
-			// Add any cleanup or save code here
-		});
 	}
 
 	private void registerKeybinds() {
