@@ -13,4 +13,8 @@ public class ModConfig extends PartitioningSerializer.GlobalData {
     @ConfigEntry.Category("levelUpMessageConfig")
     @ConfigEntry.Gui.TransitiveObject
     public LevelUpMessageConfig levelUpMessageConfig = new LevelUpMessageConfig();
+
+    @ConfigEntry.Category("bingoConfig")
+    @ConfigEntry.Gui.TransitiveObject
+    public BingoConfig bingoConfig = new BingoConfig();
 }
