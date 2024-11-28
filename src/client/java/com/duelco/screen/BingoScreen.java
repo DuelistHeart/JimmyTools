@@ -13,6 +13,7 @@ import io.wispforest.owo.ui.core.*;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.text.Text;
 import net.minecraft.util.Colors;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
@@ -54,6 +55,13 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
 
         rootComponent.child(
                 bingoCardsLayout
+        ).child(
+                Components.button(Text.of("Clear cards"), buttonComponent -> {
+                    for (BingoCard bingoCard : bingoCards) {
+                        bingoCard.clear();
+                        MinecraftClient.getInstance().setScreen(new BingoScreen());
+                    }
+                })
         );
     }
 }
