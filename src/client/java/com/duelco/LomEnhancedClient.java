@@ -3,7 +3,7 @@ package com.duelco;
 import com.duelco.config.ModConfig;
 import com.duelco.handlers.SkinFlipperHandler;
 import com.duelco.handlers.SlashMeContinuesHandler;
-import com.duelco.screen.BingoScreen;
+import com.duelco.ui.screen.BingoScreen;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import me.shedaniel.autoconfig.serializer.PartitioningSerializer;

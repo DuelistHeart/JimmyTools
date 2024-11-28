@@ -1,15 +1,14 @@
-package com.duelco.screen;
+package com.duelco.ui.screen;
 
 import com.duelco.obj.BingoCard;
+import com.duelco.ui.managers.BingoCardUIManager;
 import io.wispforest.owo.ui.base.BaseOwoScreen;
 import io.wispforest.owo.ui.component.Components;
 import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.container.FlowLayout;
-import io.wispforest.owo.ui.container.ScrollContainer;
 import io.wispforest.owo.ui.core.*;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.toast.SystemToast;
-import net.minecraft.client.toast.ToastManager;
 import net.minecraft.text.Text;
 import org.jetbrains.annotations.NotNull;
 
@@ -39,7 +38,7 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
                 .alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
 
         for (BingoCard bingoCard : bingoCards) {
-            bingoCardsLayout.child(bingoCard.buildBingoCardComponent());
+            bingoCardsLayout.child(BingoCardUIManager.buildBingoCardComponent(bingoCard));
         }
 
         FlowLayout buttonGroup = (FlowLayout) Containers.horizontalFlow(Sizing.fill(), Sizing.fixed(22))
