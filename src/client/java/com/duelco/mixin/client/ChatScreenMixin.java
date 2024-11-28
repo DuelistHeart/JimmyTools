@@ -1,6 +1,5 @@
 package com.duelco.mixin.client;
 
-import com.duelco.LomEnhancedClient;
 import com.duelco.handlers.SlashMeContinuesHandler;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ChatScreen;

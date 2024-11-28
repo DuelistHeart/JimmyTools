@@ -1,6 +1,6 @@
 package com.duelco.mixin.client;
 
-import com.duelco.LomEnhancedClient;
+import com.duelco.DuelUtilsClient;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.s2c.play.SubtitleS2CPacket;
@@ -16,8 +16,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -30,9 +28,9 @@ public class TitleMixin {
     @Shadow private Text text;
     @Inject(at = @At("HEAD"), method = "apply(Lnet/minecraft/network/listener/ClientPlayPacketListener;)V")
     private void onTitle(ClientPlayPacketListener clientPlayPacketListener, CallbackInfo ci) {
-        LOGGER.info("LevelUp message is {}", LomEnhancedClient.config.levelUpMessageConfig.areMessagesEnabled());
+        LOGGER.info("LevelUp message is {}", DuelUtilsClient.config.levelUpMessageConfig.areMessagesEnabled());
 
-        if (LomEnhancedClient.config.levelUpMessageConfig.areMessagesEnabled()) {
+        if (DuelUtilsClient.config.levelUpMessageConfig.areMessagesEnabled()) {
             LOGGER.info("receiving title: {}", text);
             MinecraftClient client = MinecraftClient.getInstance();
 

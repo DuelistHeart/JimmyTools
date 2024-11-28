@@ -1,0 +1,18 @@
+{
+  "text.autoconfig.duelutils.title": "LoM2 Enhanced Configuration",
+  "text.autoconfig.duelutils.category.skinFlipperConfig": "Skin Flipper",
+  "text.autoconfig.duelutils.category.levelUpMessageConfig": "LevelUp Message",
+  "text.autoconfig.duelutils.option.skinFlipperConfig.isSkinFlipped": "Is your skin currently \"flipped\"",
+  "text.autoconfig.duelutils.option.skinFlipperConfig.isSkinFlipped.@Tooltip": "Determines whether you are in the dynamic skin or \"flipped\" to the constant skin.",
+  "text.autoconfig.duelutils.option.skinFlipperConfig.changingSkin": "Dynamic Skin",
+  "text.autoconfig.duelutils.option.skinFlipperConfig.changingSkin.@Tooltip": "The skin url for the skin that is expected to change.",
+  "text.autoconfig.duelutils.option.skinFlipperConfig.constantSkin": "Constant Skin",
+  "text.autoconfig.duelutils.option.skinFlipperConfig.constantSkin.@Tooltip": "The skin url for the skin that should stay the same.",
+  "text.autoconfig.duelutils.option.levelUpMessageConfig.areMessagesEnabled": "Level Up Messages Enabled",
+  "text.autoconfig.duelutils.option.levelUpMessageConfig.areMessagesEnabled.@Tooltip": "Determines if level up messages are sent in the chat.",
+  "category.duelco.skinflipper": "DuelUtils SkinFlipper",
+  "key.duelco.flipskin": "Flip Skin",
+  "category.duelco.screens": "DuelUtils Screens",
+  "category.duelco.bingo_options": "DuelUtils Bingo",
+  "key.duelco.bingo_screen": "Open Bingo Screen"
+}

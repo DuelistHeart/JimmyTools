@@ -1,9 +1,9 @@
 {
 	"schemaVersion": 1,
-	"id": "lom-enhanced",
+	"id": "duelutils",
 	"version": "${version}",
-	"name": "LoM QoL Pack",
-	"description": "A mod full of QoL features for LoM.",
+	"name": "Duel Utils",
+	"description": "A mod full of QoL features for LoM2.",
 	"authors": [
 		"DuelistHeart"
 	],
@@ -12,23 +12,23 @@
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/lom-enhanced/icon.png",
+	"icon": "assets/duelutils/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.duelco.LomEnhanced"
+			"com.duelco.DuelUtils"
 		],
 		"client": [
-			"com.duelco.LomEnhancedClient"
+          "com.duelco.DuelUtilsClient"
 		],
 		"modmenu": [
 			"com.duelco.integrations.ModMenuIntegration"
 		]
 	},
 	"mixins": [
-		"lom-enhanced.mixins.json",
+		"duelutils.mixins.json",
 		{
-			"config": "lom-enhanced.client.mixins.json",
+			"config": "duelutils.client.mixins.json",
 			"environment": "client"
 		}
 	],

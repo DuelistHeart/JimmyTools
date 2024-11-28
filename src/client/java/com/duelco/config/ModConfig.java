@@ -4,7 +4,7 @@ import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 
-@Config(name = "lom-enhanced")
+@Config(name = "duelutils")
 public class ModConfig extends PartitioningSerializer.GlobalData {
     @ConfigEntry.Category("skinFlipperConfig")
     @ConfigEntry.Gui.TransitiveObject

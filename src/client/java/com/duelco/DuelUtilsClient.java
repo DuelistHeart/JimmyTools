@@ -17,12 +17,12 @@ import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class LomEnhancedClient implements ClientModInitializer {
+public class DuelUtilsClient implements ClientModInitializer {
 	private static final Identifier SCREEN_ID = Identifier.of("fabricmod", "apple_grid_screen");
 
 	private static KeyBinding skinFlipperToggleKeybind;
 	private static KeyBinding bingoScreenKeybind;
-	public static final Logger LOGGER = LoggerFactory.getLogger("lom-enhanced-client");
+	public static final Logger LOGGER = LoggerFactory.getLogger("duelutils-client");
 	public static ModConfig config;
 
 	@Override

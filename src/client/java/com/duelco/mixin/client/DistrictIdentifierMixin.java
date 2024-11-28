@@ -1,6 +1,5 @@
 package com.duelco.mixin.client;
 
-import com.duelco.LomEnhancedClient;
 import com.duelco.handlers.TabListHandler;
 import net.minecraft.network.packet.s2c.play.PlayerListHeaderS2CPacket;
 import net.minecraft.text.Text;
