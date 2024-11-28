@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 import java.util.List;
 
 public class BingoCard {
-    private List<BingoItem> items;
+    private final List<BingoItem> items;
 
     public BingoCard() {
         this.items = BingoPossibleItemsList.generateBingoItemsList();
