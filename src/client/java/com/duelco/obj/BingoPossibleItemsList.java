@@ -22,7 +22,7 @@ public class BingoPossibleItemsList {
         items.add(new BingoItem(Items.RABBIT_FOOT.getDefaultStack(), 14, false)); // Raw Ore
         items.add(new BingoItem(Items.POTION.getDefaultStack(), 1, false)); // Bottle of Water
         items.add(new BingoItem(Items.RABBIT_FOOT.getDefaultStack(), 39, false)); // Christmas Envelope
-        items.add(new BingoItem(Items.RABBIT_FOOT.getDefaultStack(), 12, false)); // Goo Glue
+        items.add(new BingoItem(Items.APPLE.getDefaultStack(), 15, false)); // Goo Glue
         items.add(new BingoItem(Items.ROTTEN_FLESH.getDefaultStack(), 1, false)); // Muk Pie
         items.add(new BingoItem(Items.APPLE.getDefaultStack(), 3, false)); // Devilish Apples
         items.add(new BingoItem(Items.RABBIT_FOOT.getDefaultStack(), 38, false)); // Crafting Scrape
