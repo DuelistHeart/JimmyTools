@@ -33,10 +33,4 @@ public class ChatScreenMixin {
             }
         }
     }
-
-    @Inject(at = @At("HEAD"), method = "sendMessage", cancellable = true)
-    protected void checkForCharacterChange(String chatText, boolean addToHistory, CallbackInfo info) {
-
-        System.out.println("Chat text: " + chatText);
-    }
 }
