@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
 
 @Mixin(SubtitleS2CPacket.class)
 public class TitleMixin {
+    @Unique
     private static final Logger LOGGER = LoggerFactory.getLogger("title-mixin");
 
     @Final

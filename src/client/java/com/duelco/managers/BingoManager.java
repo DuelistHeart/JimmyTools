@@ -1,7 +1,6 @@
 package com.duelco.managers;
 
 import com.duelco.DuelUtilsClient;
-import com.duelco.config.BingoConfig;
 import com.duelco.obj.BingoCard;
 import com.duelco.ui.screen.BingoScreen;
 import net.minecraft.client.MinecraftClient;

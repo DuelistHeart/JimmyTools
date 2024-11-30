@@ -6,6 +6,7 @@ import net.minecraft.client.gui.screen.ChatScreen;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -14,11 +15,11 @@ import java.util.List;
 
 @Mixin(ChatScreen.class)
 public class ChatScreenMixin {
+    @Unique
     MinecraftClient client = MinecraftClient.getInstance();
 
     @Inject(at = @At("HEAD"), method = "sendMessage", cancellable = true)
     protected void checkSlashMeMessage(String chatText, boolean addToHistory, CallbackInfo info) {
-//        SlashMeContinuesHandler.handleChatMessage(chatText, MinecraftClient.getInstance().player);
         if (chatText.startsWith("/me")) {
             List<String> slashMeSplit = SlashMeContinuesHandler.handleChatMessage(chatText);
 

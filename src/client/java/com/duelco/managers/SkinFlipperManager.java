@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 
 public class SkinFlipperManager {
     private static final Logger LOGGER = LoggerFactory.getLogger("skin-flipper-data-manager");
-    public SkinFlipperConfig config;
     public String flipSkin(String currentSkin) {
         if (DuelUtilsClient.config.skinFlipperConfig.isSkinFlipped()) {
             DuelUtilsClient.config.skinFlipperConfig.setSkinFlipped(false);
