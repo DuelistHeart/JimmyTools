@@ -1,5 +1,5 @@
 {
-  "text.autoconfig.duelutils.title": "LoM2 Enhanced Configuration",
+  "text.autoconfig.duelutils.title": "DuelUtils Configuration",
   "text.autoconfig.duelutils.category.skinFlipperConfig": "Skin Flipper",
   "text.autoconfig.duelutils.category.levelUpMessageConfig": "LevelUp Message",
   "text.autoconfig.duelutils.category.bingoConfig": "Bingo",
@@ -17,10 +17,9 @@
   "text.autoconfig.duelutils.option.chatUtilsConfig.slashMeContinuesEnabled": "Enable /me Continues",
   "text.autoconfig.duelutils.option.chatUtilsConfig.slashMeContinuesEnabled.@Tooltip": "Enables splitting a /me into two if it is too long.",
   "text.autoconfig.duelutils.option.chatUtilsConfig.startupCommandsNamesEnabled": "Enable /names off On Startup",
-  "text.autoconfig.duelutils.option.chatUtilsConfig.startupCommandsNamesEnabled.@Tooltip": "Turns player names off upon joining the server..",
-  "category.duelco.skinflipper": "DuelUtils SkinFlipper",
-  "key.duelco.flipskin": "Flip Skin",
-  "category.duelco.screens": "DuelUtils Screens",
-  "category.duelco.bingo_options": "DuelUtils Bingo",
-  "key.duelco.bingo_screen": "Open Bingo Screen"
+  "text.autoconfig.duelutils.option.chatUtilsConfig.startupCommandsNamesEnabled.@Tooltip": "Turns player names off upon joining the server.",
+  "category.duelutils": "DuelUtils",
+  "key.duelutils.flipskin": "Flip Skin",
+  "key.duelutils.bingo_screen": "Open Bingo Screen",
+  "key.duelutils.modmenu": "Open DuelUtils Config"
 }

@@ -10,6 +10,7 @@ import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import org.lwjgl.glfw.GLFW;
@@ -19,6 +20,7 @@ import org.slf4j.LoggerFactory;
 public class DuelUtilsClient implements ClientModInitializer {
 	private static KeyBinding skinFlipperToggleKeybind;
 	private static KeyBinding bingoScreenKeybind;
+	private static KeyBinding modMenuKeybind;
 	public static final Logger LOGGER = LoggerFactory.getLogger("duelutils-client");
 	public static ModConfig config;
 
@@ -41,21 +43,34 @@ public class DuelUtilsClient implements ClientModInitializer {
 				client.setScreen(new BingoScreen());
 			}
 		});
+
+		ClientTickEvents.END_CLIENT_TICK.register(client -> {
+			while (modMenuKeybind.wasPressed()) {
+				client.setScreen(AutoConfig.getConfigScreen(ModConfig.class, client.currentScreen).get());
+			}
+		});
 	}
 
 	private void registerKeybinds() {
 		skinFlipperToggleKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.duelco.flipskin", // The translation key of the keybinding's name
+				"key.duelutils.flipskin", // The translation key of the keybinding's name
 				InputUtil.Type.KEYSYM, // The type of the keybinding, KEYSYM for keyboard, MOUSE for mouse.
 				GLFW.GLFW_KEY_K, // The keycode of the key
-				"category.duelco.skinflipper" // The translation key of the keybinding's category.
+				"category.duelutils" // The translation key of the keybinding's category.
 		));
 
 		bingoScreenKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.duelco.bingo_screen",
+				"key.duelutils.bingo_screen",
 				InputUtil.Type.KEYSYM,
-				GLFW.GLFW_KEY_K,
-				"category.duelco.bingo_options"
+				GLFW.GLFW_KEY_B,
+				"category.duelutils"
+		));
+
+		modMenuKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+				"key.duelutils.modmenu",
+				InputUtil.Type.KEYSYM,
+				GLFW.GLFW_KEY_M,
+				"category.duelutils"
 		));
 	}
 
