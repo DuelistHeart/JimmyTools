@@ -6,9 +6,9 @@ import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 
 @Config(name = "duelutils")
 public class ModConfig extends PartitioningSerializer.GlobalData {
-    @ConfigEntry.Category("skinFlipperConfig")
+    @ConfigEntry.Category("transformationHelperConfig")
     @ConfigEntry.Gui.TransitiveObject
-    public SkinFlipperConfig skinFlipperConfig = new SkinFlipperConfig();
+    public TransformationHelperConfig transformationHelperConfig = new TransformationHelperConfig();
 
     @ConfigEntry.Category("levelUpMessageConfig")
     @ConfigEntry.Gui.TransitiveObject

@@ -1,8 +1,7 @@
 package com.duelco;
 
 import com.duelco.config.ModConfig;
-import com.duelco.handlers.SkinFlipperHandler;
-import com.duelco.handlers.SlashMeContinuesHandler;
+import com.duelco.handlers.TransformationHelperHandler;
 import com.duelco.ui.screen.BingoScreen;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
@@ -10,7 +9,6 @@ import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import org.lwjgl.glfw.GLFW;
@@ -37,7 +35,7 @@ public class DuelUtilsClient implements ClientModInitializer {
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (skinFlipperToggleKeybind.wasPressed()) {
-				SkinFlipperHandler.execute();
+				TransformationHelperHandler.execute();
 			}
 			while (bingoScreenKeybind.wasPressed()) {
 				client.setScreen(new BingoScreen());
