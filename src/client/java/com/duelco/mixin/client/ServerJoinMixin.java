@@ -1,6 +1,7 @@
 package com.duelco.mixin.client;
 
 import com.duelco.DuelUtilsClient;
+import com.duelco.config.ModConfig;
 import com.duelco.managers.StartupCmdManager;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
@@ -19,7 +20,7 @@ public class ServerJoinMixin {
 
     @Inject(method = "onGameJoin", at = @At("HEAD"))
     private void onServerJoin(GameJoinS2CPacket packet, CallbackInfo ci) {
-        if (DuelUtilsClient.config.chatUtilsConfig.startupCommandsNamesEnabled) {
+        if (ModConfig.startupCommandsNamesEnabled) {
             MinecraftClient client = MinecraftClient.getInstance();
 
             // Retrieve the network connection

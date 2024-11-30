@@ -1,5 +1,7 @@
 package com.duelco.ui.managers;
 
+import com.duelco.DuelUtilsClient;
+import com.duelco.config.ModConfig;
 import com.duelco.obj.BingoCard;
 import io.wispforest.owo.ui.component.Components;
 import io.wispforest.owo.ui.container.Containers;
@@ -33,7 +35,7 @@ public class BingoCardUIManager {
 
         bingoGridContainerElement.child(
                 Components.box(Sizing.fill(), Sizing.fill())
-                        .color(Color.ofRgb(13998473))
+                        .color(Color.ofRgb(ModConfig.getBingoGridColorPackedInt()))
                         .fill(true)
         ).child(
                 bingoGridElement
@@ -41,7 +43,7 @@ public class BingoCardUIManager {
 
         bingoCardElement.child(
                 Components.box(Sizing.fixed(130), Sizing.fixed(160))
-                        .color(Color.ofRgb(15457478))
+                        .color(Color.ofRgb(ModConfig.getBingoBackgroundColorPackedInt()))
                         .fill(true)
         ).child(
                 Components.texture(Identifier.of("duelutils","ui/bingo_header.png"), 1, 1, 255, 256)

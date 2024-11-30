@@ -1,6 +1,7 @@
 package com.duelco.mixin.client;
 
 import com.duelco.DuelUtilsClient;
+import com.duelco.config.ModConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.s2c.play.SubtitleS2CPacket;
@@ -29,9 +30,8 @@ public class TitleMixin {
     @Shadow private Text text;
     @Inject(at = @At("HEAD"), method = "apply(Lnet/minecraft/network/listener/ClientPlayPacketListener;)V")
     private void onTitle(ClientPlayPacketListener clientPlayPacketListener, CallbackInfo ci) {
-        LOGGER.info("LevelUp message is {}", DuelUtilsClient.config.levelUpMessageConfig.areMessagesEnabled());
 
-        if (DuelUtilsClient.config.levelUpMessageConfig.areMessagesEnabled()) {
+        if (ModConfig.areLevelUpMessagesEnabled) {
             LOGGER.info("receiving title: {}", text);
             MinecraftClient client = MinecraftClient.getInstance();
 

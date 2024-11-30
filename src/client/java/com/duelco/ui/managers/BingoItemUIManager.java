@@ -1,5 +1,6 @@
 package com.duelco.ui.managers;
 
+import com.duelco.config.ModConfig;
 import com.duelco.obj.BingoItem;
 import io.wispforest.owo.ui.component.Components;
 import io.wispforest.owo.ui.container.Containers;
@@ -17,7 +18,7 @@ public class BingoItemUIManager {
         sampleSlot.child(
                 Components.box(Sizing.fill(), Sizing.fill())
                         .fill(true)
-                        .color(Color.ofRgb(15457478))
+                        .color(Color.ofRgb(ModConfig.getBingoBackgroundColorPackedInt()))
         );
 
         if (bingoItem.isFreeSpace()) {

@@ -3,9 +3,7 @@ package com.duelco;
 import com.duelco.config.ModConfig;
 import com.duelco.handlers.TransformationHelperHandler;
 import com.duelco.ui.screen.BingoScreen;
-import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
-import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
+import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -20,16 +18,10 @@ public class DuelUtilsClient implements ClientModInitializer {
 	private static KeyBinding bingoScreenKeybind;
 	private static KeyBinding modMenuKeybind;
 	public static final Logger LOGGER = LoggerFactory.getLogger("duelutils-client");
-	public static ModConfig config;
 
 	@Override
 	public void onInitializeClient() {
-		AutoConfig.register(
-				ModConfig.class,
-				PartitioningSerializer.wrap(JanksonConfigSerializer::new)
-		);
-
-		config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+		MidnightConfig.init("duelutils", ModConfig.class);
 
 		registerKeybinds();
 
@@ -44,7 +36,7 @@ public class DuelUtilsClient implements ClientModInitializer {
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (modMenuKeybind.wasPressed()) {
-				client.setScreen(AutoConfig.getConfigScreen(ModConfig.class, client.currentScreen).get());
+				client.setScreen(MidnightConfig.getScreen(client.currentScreen, "duelutils"));
 			}
 		});
 	}

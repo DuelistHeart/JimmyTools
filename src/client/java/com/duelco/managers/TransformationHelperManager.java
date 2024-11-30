@@ -1,19 +1,19 @@
 package com.duelco.managers;
 
-import com.duelco.DuelUtilsClient;
+import com.duelco.config.ModConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class TransformationHelperManager {
-    private static final Logger LOGGER = LoggerFactory.getLogger("skin-flipper-data-manager");
+    private static final Logger LOGGER = LoggerFactory.getLogger("TransformationHelperManager");
     public String handleTransform(String currentSkin) {
-        if (DuelUtilsClient.config.transformationHelperConfig.isTransformed()) {
-            DuelUtilsClient.config.transformationHelperConfig.setIsTransformed(false);
-            return DuelUtilsClient.config.transformationHelperConfig.getTransformationSkin();
+        if (ModConfig.isTransformed) {
+            ModConfig.isTransformed = false;
+            return ModConfig.regularSkin;
         } else {
-            DuelUtilsClient.config.transformationHelperConfig.setRegularSkin(currentSkin);
-            DuelUtilsClient.config.transformationHelperConfig.setIsTransformed(true);
-            return DuelUtilsClient.config.transformationHelperConfig.getRegularSkin();
+            ModConfig.regularSkin = currentSkin;
+            ModConfig.isTransformed = true;
+            return ModConfig.transformationSkin;
         }
     }
 }
