@@ -1,12 +1,10 @@
 package com.duelco.ui.managers;
 
 import com.duelco.obj.BingoItem;
-import com.duelco.ui.screen.BingoScreen;
 import io.wispforest.owo.ui.component.Components;
 import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.container.StackLayout;
 import io.wispforest.owo.ui.core.*;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.Identifier;
 
 public class BingoItemUIManager {
@@ -26,19 +24,14 @@ public class BingoItemUIManager {
             sampleSlot.child(
                     Components.texture(Identifier.of("duelutils", "ui/free_space.png"), 1, 1, 256, 256)
                             .sizing(Sizing.fixed(20))
-                            .zIndex(20)
+                            .zIndex(500)
             );
         } else {
             sampleSlot.child(
                     Components.item(bingoItem.getItem())
+                            .zIndex(25)
             );
         }
-
-        sampleSlot.mouseDown().subscribe((a, b, c) -> {
-            bingoItem.setMarked(!bingoItem.isMarked());
-            MinecraftClient.getInstance().setScreen(new BingoScreen());
-            return true;
-        });
 
         if (bingoItem.isMarked()) {
             sampleSlot.child(
