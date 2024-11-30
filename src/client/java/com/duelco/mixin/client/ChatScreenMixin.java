@@ -1,5 +1,7 @@
 package com.duelco.mixin.client;
 
+import com.duelco.DuelUtilsClient;
+import com.duelco.config.ChatUtilsConfig;
 import com.duelco.handlers.SlashMeContinuesHandler;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ChatScreen;
@@ -20,17 +22,19 @@ public class ChatScreenMixin {
 
     @Inject(at = @At("HEAD"), method = "sendMessage", cancellable = true)
     protected void checkSlashMeMessage(String chatText, boolean addToHistory, CallbackInfo info) {
-        if (chatText.startsWith("/me")) {
-            List<String> slashMeSplit = SlashMeContinuesHandler.handleChatMessage(chatText);
+        if (DuelUtilsClient.config.chatUtilsConfig.slashMeContinuesEnabled) {
+            if (chatText.startsWith("/me")) {
+                List<String> slashMeSplit = SlashMeContinuesHandler.handleChatMessage(chatText);
 
-            if (slashMeSplit.size() > 2) {
-                client.player.sendMessage(Text.literal("That message is a bit too long, it is recommended to shorten it.").formatted(Formatting.RED));
-                info.cancel();
-            } else if (slashMeSplit.size() > 1) {
-                for (String message : slashMeSplit) {
-                    client.player.networkHandler.sendChatCommand("me " + message);
+                if (slashMeSplit.size() > 2) {
+                    client.player.sendMessage(Text.literal("That message is a bit too long, it is recommended to shorten it.").formatted(Formatting.RED));
+                    info.cancel();
+                } else if (slashMeSplit.size() > 1) {
+                    for (String message : slashMeSplit) {
+                        client.player.networkHandler.sendChatCommand("me " + message);
+                    }
+                    info.cancel();
                 }
-                info.cancel();
             }
         }
     }

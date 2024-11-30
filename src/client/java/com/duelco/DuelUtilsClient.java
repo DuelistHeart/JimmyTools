@@ -32,7 +32,6 @@ public class DuelUtilsClient implements ClientModInitializer {
 		config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 
 		registerKeybinds();
-		SlashMeContinuesHandler.register();
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (skinFlipperToggleKeybind.wasPressed()) {

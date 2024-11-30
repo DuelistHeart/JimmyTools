@@ -1,5 +1,6 @@
 package com.duelco.mixin.client;
 
+import com.duelco.DuelUtilsClient;
 import com.duelco.managers.StartupCmdManager;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
@@ -18,13 +19,15 @@ public class ServerJoinMixin {
 
     @Inject(method = "onGameJoin", at = @At("HEAD"))
     private void onServerJoin(GameJoinS2CPacket packet, CallbackInfo ci) {
-        MinecraftClient client = MinecraftClient.getInstance();
+        if (DuelUtilsClient.config.chatUtilsConfig.startupCommandsNamesEnabled) {
+            MinecraftClient client = MinecraftClient.getInstance();
 
-        // Retrieve the network connection
-        ClientConnection connection = ((ClientPlayNetworkHandler) (Object) this).getConnection();
+            // Retrieve the network connection
+            ClientConnection connection = ((ClientPlayNetworkHandler) (Object) this).getConnection();
 
-        if (connection != null && connection.getAddress() != null && connection.getAddress().toString().startsWith("lords.rawb.tv")) {
-            client.execute(startupCmdManager::executeNamesCmd);
+            if (connection != null && connection.getAddress() != null && connection.getAddress().toString().startsWith("lords.rawb.tv")) {
+                client.execute(startupCmdManager::executeNamesCmd);
+            }
         }
     }
 }

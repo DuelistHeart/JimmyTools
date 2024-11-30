@@ -1,6 +1,5 @@
 package com.duelco.handlers;
 
-import net.minecraft.client.MinecraftClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,9 +9,6 @@ import java.util.StringJoiner;
 
 public class SlashMeContinuesHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger("handlers.SlashMeContinuesHandler");
-    private static final MinecraftClient client = MinecraftClient.getInstance();
-    public static void register() {
-    }
 
     public static List<String> handleChatMessage(String chatText) {
         String parsedChatText = chatText.substring(4);
@@ -34,8 +30,6 @@ public class SlashMeContinuesHandler {
             }
 
             newChatMessages.add(sentence.toString());
-//            newChatMessages.add(parsedChatText.substring(0,49));
-//            newChatMessages.add(parsedChatText.substring(50));
         } else {
             newChatMessages.add(parsedChatText);
         }

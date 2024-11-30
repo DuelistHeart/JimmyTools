@@ -17,4 +17,8 @@ public class ModConfig extends PartitioningSerializer.GlobalData {
     @ConfigEntry.Category("bingoConfig")
     @ConfigEntry.Gui.TransitiveObject
     public BingoConfig bingoConfig = new BingoConfig();
+
+    @ConfigEntry.Category("chatUtilsConfig")
+    @ConfigEntry.Gui.TransitiveObject
+    public ChatUtilsConfig chatUtilsConfig = new ChatUtilsConfig();
 }
