@@ -19,7 +19,7 @@
   "text.autoconfig.duelutils.option.chatUtilsConfig.startupCommandsNamesEnabled": "Enable /names off On Startup",
   "text.autoconfig.duelutils.option.chatUtilsConfig.startupCommandsNamesEnabled.@Tooltip": "Turns player names off upon joining the server.",
   "category.duelutils": "DuelUtils",
-  "key.duelutils.flipskin": "Flip Skin",
+  "key.duelutils.flipskin": "Transform Skin",
   "key.duelutils.bingo_screen": "Open Bingo Screen",
   "key.duelutils.modmenu": "Open DuelUtils Config"
 }

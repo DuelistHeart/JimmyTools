@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"id": "duelutils",
 	"version": "${version}",
-	"name": "Duel Utils",
+	"name": "DuelUtils",
 	"description": "A mod full of QoL features for LoM2.",
 	"authors": [
 		"DuelistHeart"
