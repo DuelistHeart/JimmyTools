@@ -68,6 +68,7 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
                 }).margins(Insets.of(2))
         ).child(
                 Components.button(Text.of("Reset"), buttonComponent -> {
+                    bingoMarkerManager.clearMarkers();
                     bingoManager.resetCards();
                     MinecraftClient.getInstance().setScreen(new BingoScreen());
                 }).margins(Insets.of(2))
