@@ -1,7 +1,6 @@
 package com.duelco.handlers;
 
 import com.duelco.config.ModConfig;
-import com.duelco.config.NewModConfig;
 import com.duelco.managers.TransformationHelperManager;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.PlayerListEntry;
