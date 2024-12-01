@@ -18,12 +18,15 @@ public class TransformationHelperHandler {
             LOGGER.info("Retrieving skin url.");
             String skinUrl = getPlayerSkin();
             LOGGER.info("The retrieved player skin is {}", skinUrl);
-            LOGGER.info("Executing skin flip.");
+            LOGGER.info("Executing transformation.");
             String newSkin = transformationHelperManager.handleTransform(getPlayerSkin());
-            LOGGER.info("The new player skin is {}", newSkin);
-            client.player.networkHandler.sendChatCommand("skin " + newSkin);
-            LOGGER.info("The command is /skin {}", newSkin);
-            ModConfig.HANDLER.save();
+
+            if (newSkin != null) {
+                LOGGER.info("The new player skin is {}", newSkin);
+                client.player.networkHandler.sendChatCommand("skin " + newSkin);
+                LOGGER.info("The command is /skin {}", newSkin);
+                ModConfig.HANDLER.save();
+            }
         } else {
             LOGGER.debug("Player is null, skipping command execution.");
         }
