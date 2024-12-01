@@ -34,10 +34,10 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
                 .surface(Surface.VANILLA_TRANSLUCENT)
                 .alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
 
-        StackLayout bingoCardsAndMarkerLayout = (StackLayout) Containers.stack(Sizing.fill(), Sizing.fixed(220))
+        StackLayout bingoCardsAndMarkerLayout = (StackLayout) Containers.stack(Sizing.fixed(500), Sizing.fixed(220))
                 .alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
 
-        FlowLayout bingoCardsLayout = (FlowLayout) Containers.horizontalFlow(Sizing.fill(), Sizing.fixed(220))
+        FlowLayout bingoCardsLayout = (FlowLayout) Containers.horizontalFlow(Sizing.fixed(500), Sizing.fixed(220))
                 .alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
 
         bingoCardsAndMarkerLayout.child(bingoCardsLayout)

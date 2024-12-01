@@ -44,7 +44,7 @@ public class ModConfig {
     @SerialEntry
     public static boolean startupCommandsNamesEnabled = true;
     @SerialEntry
-    public static NamesCmdOptions startupCommandsNamesOption = NamesCmdOptions.NAMES_OFF;
+    public static NamesCmdOptions startupCommandsNamesOption = NamesCmdOptions.NAMES_CHAR;
 
     public static YetAnotherConfigLib build() {
         return YetAnotherConfigLib.createBuilder()
