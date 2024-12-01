@@ -1,41 +1,45 @@
 {
 	"schemaVersion": 1,
-	"id": "lom-skin-flipper",
+	"id": "duelutils",
 	"version": "${version}",
-	"name": "LoM Skin Flipper",
-	"description": "A simple mod for flipping a skin from one skin to another. Designed for LoM2.",
+	"name": "DuelUtils",
+	"description": "A mod full of QoL and utility features for LoM2.",
 	"authors": [
 		"DuelistHeart"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/DuelistHeart/DuelUtils"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/lom-head-mod/icon.png",
+	"icon": "assets/duelutils/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-          "com.duelco.LoMSkinFlipper"
+			"com.duelco.DuelUtils"
 		],
 		"client": [
-			"com.duelco.LoMSkinFlipperClient"
+          "com.duelco.DuelUtilsClient"
+		],
+		"modmenu": [
+			"com.duelco.integrations.ModMenuIntegration"
 		]
 	},
 	"mixins": [
-		"lom-skin-flipper.mixins.json",
+		"duelutils.mixins.json",
 		{
-			"config": "lom-skin-flipper.client.mixins.json",
+			"config": "duelutils.client.mixins.json",
 			"environment": "client"
 		}
 	],
 	"depends": {
 		"fabricloader": ">=0.15.5",
-		"minecraft": "~1.20.4",
-		"java": ">=17",
-		"fabric-api": "*"
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*",
+		"owo-lib": "*",
+		"yet_another_config_lib_v3": ">=3.6.1+1.21-fabric"
 	},
-	"suggests": {
-		"another-mod": "*"
+	"recommends": {
+		"modmenu": "*"
 	}
 }
