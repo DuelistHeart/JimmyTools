@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 public class TransformationHelperHandler {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger("handlers.SkinFlipperHandler");
+    private static final Logger LOGGER = LoggerFactory.getLogger("handlers.TransformationHelper");
     private static final MinecraftClient client = MinecraftClient.getInstance();
     private static final TransformationHelperManager transformationHelperManager = new TransformationHelperManager();
 
