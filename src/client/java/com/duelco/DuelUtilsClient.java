@@ -87,28 +87,28 @@ public class DuelUtilsClient implements ClientModInitializer {
 		bagOneKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
 				"key.duelutils.openbagone",
 				InputUtil.Type.KEYSYM,
-				GLFW.GLFW_KEY_P,
+				GLFW.GLFW_KEY_UP,
 				"category.duelutils"
 		));
 
 		bagTwoKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
 				"key.duelutils.openbagtwo",
 				InputUtil.Type.KEYSYM,
-				GLFW.GLFW_DONT_CARE,
+				GLFW.GLFW_KEY_RIGHT,
 				"category.duelutils"
 		));
 
 		bagThreeKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
 				"key.duelutils.openbagthree",
 				InputUtil.Type.KEYSYM,
-				GLFW.GLFW_DONT_CARE,
+				GLFW.GLFW_KEY_DOWN,
 				"category.duelutils"
 		));
 
 		bagFourKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
 				"key.duelutils.openbagfour",
 				InputUtil.Type.KEYSYM,
-				GLFW.GLFW_DONT_CARE,
+				GLFW.GLFW_KEY_LEFT,
 				"category.duelutils"
 		));
 	}
