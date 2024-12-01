@@ -18,7 +18,7 @@ public class BingoItemUIManager {
         sampleSlot.child(
                 Components.box(Sizing.fill(), Sizing.fill())
                         .fill(true)
-                        .color(Color.ofRgb(ModConfig.getBingoBackgroundColorPackedInt()))
+                        .color(Color.ofRgb(ModConfig.bingoBackgroundColor.getRGB()))
         );
 
         if (bingoItem.isFreeSpace()) {

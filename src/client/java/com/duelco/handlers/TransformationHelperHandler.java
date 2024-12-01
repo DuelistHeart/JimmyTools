@@ -1,5 +1,7 @@
 package com.duelco.handlers;
 
+import com.duelco.config.ModConfig;
+import com.duelco.config.NewModConfig;
 import com.duelco.managers.TransformationHelperManager;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.PlayerListEntry;
@@ -22,6 +24,7 @@ public class TransformationHelperHandler {
             LOGGER.info("The new player skin is {}", newSkin);
             client.player.networkHandler.sendChatCommand("skin " + newSkin);
             LOGGER.info("The command is /skin {}", newSkin);
+            ModConfig.HANDLER.save();
         } else {
             LOGGER.debug("Player is null, skipping command execution.");
         }

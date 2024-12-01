@@ -3,7 +3,6 @@ package com.duelco;
 import com.duelco.config.ModConfig;
 import com.duelco.handlers.TransformationHelperHandler;
 import com.duelco.ui.screen.BingoScreen;
-import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -21,8 +20,7 @@ public class DuelUtilsClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
-		MidnightConfig.init("duelutils", ModConfig.class);
-
+		ModConfig.HANDLER.load();
 		registerKeybinds();
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
@@ -36,7 +34,7 @@ public class DuelUtilsClient implements ClientModInitializer {
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (modMenuKeybind.wasPressed()) {
-				client.setScreen(MidnightConfig.getScreen(client.currentScreen, "duelutils"));
+				client.setScreen(ModConfig.build().generateScreen(client.currentScreen));
 			}
 		});
 	}

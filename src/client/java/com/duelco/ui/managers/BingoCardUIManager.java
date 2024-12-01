@@ -35,7 +35,7 @@ public class BingoCardUIManager {
 
         bingoGridContainerElement.child(
                 Components.box(Sizing.fill(), Sizing.fill())
-                        .color(Color.ofRgb(ModConfig.getBingoGridColorPackedInt()))
+                        .color(Color.ofRgb(ModConfig.bingoGridColor.getRGB()))
                         .fill(true)
         ).child(
                 bingoGridElement
@@ -43,7 +43,7 @@ public class BingoCardUIManager {
 
         bingoCardElement.child(
                 Components.box(Sizing.fixed(130), Sizing.fixed(160))
-                        .color(Color.ofRgb(ModConfig.getBingoBackgroundColorPackedInt()))
+                        .color(Color.ofRgb(ModConfig.bingoBackgroundColor.getRGB()))
                         .fill(true)
         ).child(
                 Components.texture(Identifier.of("duelutils","ui/bingo_header.png"), 1, 1, 255, 256)

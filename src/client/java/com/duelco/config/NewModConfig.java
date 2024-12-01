@@ -3,32 +3,20 @@ package com.duelco.config;
 import com.duelco._enum.NamesCmdOptions;
 import dev.isxander.yacl3.api.*;
 import dev.isxander.yacl3.api.controller.*;
-import dev.isxander.yacl3.config.v2.api.ConfigClassHandler;
 import dev.isxander.yacl3.config.v2.api.SerialEntry;
-import dev.isxander.yacl3.config.v2.api.serializer.GsonConfigSerializerBuilder;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 
 import java.awt.*;
 
-public class ModConfig {
-    public static ConfigClassHandler<ModConfig> HANDLER = ConfigClassHandler.createBuilder(ModConfig.class)
-            .id(Identifier.of("duelutils", "config"))
-                    .serializer(config -> GsonConfigSerializerBuilder.create(config)
-                            .setPath(FabricLoader.getInstance().getConfigDir().resolve("duelutils.json5"))
-                            .setJson5(true)
-                            .build())
-                    .build();
-
+public class NewModConfig {
     @SerialEntry
     public static boolean myBooleanOption = true;
     @SerialEntry
     public static int bingoMaxCards = 3; // The isColor property adds a color chooser for a hexadecimal color
     @SerialEntry()
-    public static Color bingoBackgroundColor = Color.decode("#e2d5c4"); // The isColor property adds a color chooser for a hexadecimal color
+    public static Color bingoBackgroundColor = Color.RED; // The isColor property adds a color chooser for a hexadecimal color
     @SerialEntry
-    public static Color bingoGridColor = Color.decode("#d59989"); // The isColor property adds a color chooser for a hexadecimal color
+    public static Color bingoGridColor = Color.BLUE; // The isColor property adds a color chooser for a hexadecimal color
 
     @SerialEntry
     public static boolean isTransformed = false;
@@ -118,9 +106,7 @@ public class ModConfig {
                                         .name(Text.literal("Names command option"))
                                         .description(OptionDescription.of(Text.literal("The option that is ran for /names on startup.")))
                                         .binding(NamesCmdOptions.NAMES_OFF, () -> startupCommandsNamesOption, newVal -> startupCommandsNamesOption = newVal)
-                                        .controller(opt -> EnumControllerBuilder.create(opt)
-                                                .enumClass(NamesCmdOptions.class)
-                                                .formatValue(v -> Text.translatable("duelutils.config.startupcommands.namesoptions." + v.name().toLowerCase())))
+                                        .controller(opt -> EnumControllerBuilder.create(opt).enumClass(NamesCmdOptions.class))
                                         .build())
                                 .build())
                         .build())
