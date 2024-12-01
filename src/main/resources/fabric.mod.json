@@ -3,13 +3,12 @@
 	"id": "duelutils",
 	"version": "${version}",
 	"name": "DuelUtils",
-	"description": "A mod full of QoL features for LoM2.",
+	"description": "A mod full of QoL and utility features for LoM2.",
 	"authors": [
 		"DuelistHeart"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/DuelistHeart/DuelUtils"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/duelutils/icon.png",
@@ -37,9 +36,10 @@
 		"minecraft": "~1.21",
 		"java": ">=21",
 		"fabric-api": "*",
+		"owo-lib": "*",
 		"yet_another_config_lib_v3": ">=3.6.1+1.21-fabric"
 	},
-	"suggests": {
-		"another-mod": "*"
+	"recommends": {
+		"modmenu": "*"
 	}
 }
