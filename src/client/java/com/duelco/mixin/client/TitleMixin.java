@@ -17,6 +17,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,6 +27,9 @@ import java.util.regex.Pattern;
 public class TitleMixin {
     @Unique
     private static final Logger LOGGER = LoggerFactory.getLogger("title-mixin");
+
+    @Unique
+    private static final List<String> pastLvlUpMessages = new ArrayList<>();
 
     @Final
     @Shadow private Text text;
@@ -38,8 +43,9 @@ public class TitleMixin {
             Text lvlUpMsg = this.getLevelUpMessage(text.getString());
 
             if (client.player != null) {
-                if (lvlUpMsg != null && !Objects.equals(lvlUpMsg.getString(), "[]")) {
+                if (lvlUpMsg != null && !Objects.equals(lvlUpMsg.getString(), "[]") && !pastLvlUpMessages.contains(lvlUpMsg.getString())) {
                     client.player.sendMessage(lvlUpMsg, false);
+                    pastLvlUpMessages.add(lvlUpMsg.getString());
                 }
             }
         }
