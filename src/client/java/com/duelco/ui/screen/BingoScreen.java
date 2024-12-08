@@ -57,7 +57,7 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
                 .horizontalAlignment(HorizontalAlignment.CENTER);
 
         buttonGroup.child(
-                Components.button(Text.of("Clear Cards"), buttonComponent -> {
+                Components.button(Text.of("Clear Marks"), buttonComponent -> {
                     bingoMarkerManager.clearMarkers();
                     MinecraftClient.getInstance().setScreen(new BingoScreen());
                 }).margins(Insets.of(2))
@@ -71,6 +71,10 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
                     bingoMarkerManager.clearMarkers();
                     bingoManager.resetCards();
                     MinecraftClient.getInstance().setScreen(new BingoScreen());
+                }).margins(Insets.of(2))
+        ).child(
+                Components.button(Text.of("Item List"), buttonComponent -> {
+                    MinecraftClient.getInstance().setScreen(new BingoItemsScreen());
                 }).margins(Insets.of(2))
         );
 

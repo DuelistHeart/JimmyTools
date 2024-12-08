@@ -9,14 +9,16 @@ public class BingoItem {
     private boolean isMarked;
     private boolean isFreeSpace;
     private int customModelDataNum;
+    private String name;
 
-    public BingoItem(ItemStack item, int customModelDataNum, boolean isMarked) {
+    public BingoItem(ItemStack item, int customModelDataNum, boolean isMarked, String name) {
         CustomModelDataComponent ItemComponents= new CustomModelDataComponent(customModelDataNum);
         item.set(DataComponentTypes.CUSTOM_MODEL_DATA, ItemComponents);
 
         this.item = item;
         this.isMarked = isMarked;
         this.isFreeSpace = false;
+        this.name = name;
     }
 
     public BingoItem(BingoItem bingoItem) {
@@ -24,6 +26,7 @@ public class BingoItem {
         this.isMarked = bingoItem.isMarked();
         this.isFreeSpace = bingoItem.isFreeSpace();
         this.customModelDataNum = bingoItem.getCustomModelDataNum();
+        this.name = bingoItem.getName();
     }
 
     public ItemStack getItem() {
@@ -56,5 +59,13 @@ public class BingoItem {
 
     public void setFreeSpace(boolean isFreeSpace) {
         this.isFreeSpace = isFreeSpace;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -3,6 +3,7 @@ package com.duelco;
 import com.duelco.config.ModConfig;
 import com.duelco.handlers.BagHandler;
 import com.duelco.handlers.TransformationHelperHandler;
+import com.duelco.ui.screen.BingoItemsScreen;
 import com.duelco.ui.screen.BingoScreen;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import net.fabricmc.api.ClientModInitializer;
