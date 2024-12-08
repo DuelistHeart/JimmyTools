@@ -73,40 +73,12 @@ public class DuelUtilsClient implements ClientModInitializer {
 				client.setScreen(ModConfig.build().generateScreen(client.currentScreen));
 			}
 		});
-
-
-		ClientTickEvents.END_CLIENT_TICK.register(this::onTick);
-	}
-
-	private void onTick(MinecraftClient client) {
-		if (client.world == null || client.player == null) return;
-
-		// Iterate through all entities in the world
-		for (Entity entity : client.world.getEntities()) {
-			// Skip the player entity
-			if (!(entity instanceof DisplayEntity.TextDisplayEntity)) continue;
-
-			// Check if the entity is within the detection radius
-			if (entity.distanceTo(client.player) <= 5) {
-				if (((DisplayEntity.TextDisplayEntity) entity).getData().backgroundColor().lerp(0) == 1073741824) {
-					System.out.println("HIIII!!!");
-				}
-				// Notify the player about the entity
-				notifyPlayer(entity);
-			}
-		}
 	}
 
 	// Add logic to decide whether to block the message
 	private boolean shouldBlockMessage(String message) {
 		// Example: Block messages containing the word "block"
 		return message.contains("block");
-	}
-
-	private void notifyPlayer(Entity entity) {
-		String entityName = entity.getName().getString(); // Get the entity's name
-		Text message = Text.literal("Entity spawned near you: " + entityName);
-		MinecraftClient.getInstance().player.sendMessage(message, false); // Send the message to the player's chat
 	}
 
 	private void registerKeybinds() {
