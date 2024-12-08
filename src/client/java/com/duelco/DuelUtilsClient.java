@@ -64,12 +64,6 @@ public class DuelUtilsClient implements ClientModInitializer {
 		});
 	}
 
-	// Add logic to decide whether to block the message
-	private boolean shouldBlockMessage(String message) {
-		// Example: Block messages containing the word "block"
-		return message.contains("block");
-	}
-
 	private void registerKeybinds() {
 		skinFlipperToggleKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
 				"key.duelutils.flipskin", // The translation key of the keybinding's name
