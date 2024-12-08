@@ -1,5 +1,6 @@
 package com.duelco.ui.screen;
 
+import com.duelco._enum.Screen;
 import com.duelco.managers.BingoManager;
 import com.duelco.obj.BingoCard;
 import com.duelco.ui.managers.BingoCardUIManager;
@@ -59,22 +60,22 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
         buttonGroup.child(
                 Components.button(Text.of("Clear Marks"), buttonComponent -> {
                     bingoMarkerManager.clearMarkers();
-                    MinecraftClient.getInstance().setScreen(new BingoScreen());
+                    ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, client);
                 }).margins(Insets.of(2))
         ).child(
                 Components.button(Text.of("Generate Card"), buttonComponent -> {
                     bingoManager.generateCard();
-                    MinecraftClient.getInstance().setScreen(new BingoScreen());
+                    ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, client);
                 }).margins(Insets.of(2))
         ).child(
                 Components.button(Text.of("Reset"), buttonComponent -> {
                     bingoMarkerManager.clearMarkers();
                     bingoManager.resetCards();
-                    MinecraftClient.getInstance().setScreen(new BingoScreen());
+                    ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, client);
                 }).margins(Insets.of(2))
         ).child(
                 Components.button(Text.of("Item List"), buttonComponent -> {
-                    MinecraftClient.getInstance().setScreen(new BingoItemsScreen());
+                    ScreenHandler.displayScreen(Screen.BINGO_ITEMS_SCREEN, client);
                 }).margins(Insets.of(2))
         );
 

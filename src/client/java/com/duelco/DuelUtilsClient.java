@@ -1,10 +1,12 @@
 package com.duelco;
 
+import com.duelco._enum.Screen;
 import com.duelco.config.ModConfig;
 import com.duelco.handlers.BagHandler;
 import com.duelco.handlers.TransformationHelperHandler;
 import com.duelco.ui.screen.BingoItemsScreen;
 import com.duelco.ui.screen.BingoScreen;
+import com.duelco.ui.screen.ScreenHandler;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
@@ -46,22 +48,22 @@ public class DuelUtilsClient implements ClientModInitializer {
 				TransformationHelperHandler.execute();
 			}
 			while (bingoScreenKeybind.wasPressed()) {
-				client.setScreen(new BingoScreen());
+				ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, client);
 			}
 			while (bagOneKeybind.wasPressed()) {
-				client.setScreen(new InventoryScreen(client.player));
+				ScreenHandler.displayScreen(Screen.INVENTORY_SCREEN, client);
 				BagHandler.clickCraftingSlot(client, 0);
 			}
 			while (bagTwoKeybind.wasPressed()) {
-				client.setScreen(new InventoryScreen(client.player));
+				ScreenHandler.displayScreen(Screen.INVENTORY_SCREEN, client);
 				BagHandler.clickCraftingSlot(client, 1);
 			}
 			while (bagThreeKeybind.wasPressed()) {
-				client.setScreen(new InventoryScreen(client.player));
+				ScreenHandler.displayScreen(Screen.INVENTORY_SCREEN, client);
 				BagHandler.clickCraftingSlot(client, 2);
 			}
 			while (bagFourKeybind.wasPressed()) {
-				client.setScreen(new InventoryScreen(client.player));
+				ScreenHandler.displayScreen(Screen.INVENTORY_SCREEN, client);
 				BagHandler.clickCraftingSlot(client, 3);
 			}
 		});
