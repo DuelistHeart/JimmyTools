@@ -38,8 +38,6 @@ public class ModConfig {
     public static String transformationSkin = "";
 
     @SerialEntry
-    public static boolean slashMeContinuesEnabled = true;
-    @SerialEntry
     public static boolean areLevelUpMessagesEnabled = true;
     @SerialEntry
     public static boolean startupCommandsNamesEnabled = true;
@@ -92,16 +90,6 @@ public class ModConfig {
                                         .name(Text.literal("Enable LevelUp Messages"))
                                         .description(OptionDescription.of(Text.literal("Enables/Disables level up messages from appearing.")))
                                         .binding(true, () -> areLevelUpMessagesEnabled, newVal -> areLevelUpMessagesEnabled = newVal)
-                                        .controller(BooleanControllerBuilder::create)
-                                        .build())
-                                .build())
-                        .group(OptionGroup.createBuilder()
-                                .name(Text.literal("SlashMe Continues Options"))
-                                .description(OptionDescription.of(Text.literal("Options for continuing longer /me's")))
-                                .option(Option.<Boolean>createBuilder()
-                                        .name(Text.literal("Enable SlashMe Continues"))
-                                        .description(OptionDescription.of(Text.literal("Enables/Disables splitting up longer /me messages.")))
-                                        .binding(true, () -> slashMeContinuesEnabled, newVal -> slashMeContinuesEnabled = newVal)
                                         .controller(BooleanControllerBuilder::create)
                                         .build())
                                 .build())

@@ -10,7 +10,6 @@ Duel Utils is a mod created to give a few Quality of Life and Utility enhancemen
 * Bag Hotkeys - Support for opening the newly added inventory bags by a hotkey (Set to arrow keys by default).
 * Transformations - Support for transforming from a dynamic skin to a constant skin. This is useful for players that have characters that transform (Mermaid, Magical Girl, Vampire, etc.) and want their character to revert to their previous skin after the transformation.
 * LevelUp Messages - Support for displaying level up messages in the Minecraft chat.
-* /me Continues - Support for splitting a long /me into two seperate /me's.
 * Startup Commands - Support for executing certain commands on server join (Currently, only /names is supported).
 
 ## Dependencies
