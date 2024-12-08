@@ -22,14 +22,14 @@ public class ModConfig {
                     .build();
 
     @SerialEntry
-    public static boolean myBooleanOption = true;
-    @SerialEntry
     public static int bingoMaxCards = 3; // The isColor property adds a color chooser for a hexadecimal color
     @SerialEntry()
     public static Color bingoBackgroundColor = Color.decode("#e2d5c4"); // The isColor property adds a color chooser for a hexadecimal color
     @SerialEntry
     public static Color bingoGridColor = Color.decode("#d59989"); // The isColor property adds a color chooser for a hexadecimal color
 
+    @SerialEntry
+    public static boolean areTransformationsEnabled = false;
     @SerialEntry
     public static boolean isTransformed = false;
     @SerialEntry
@@ -38,13 +38,11 @@ public class ModConfig {
     public static String transformationSkin = "";
 
     @SerialEntry
-    public static boolean slashMeContinuesEnabled = true;
-    @SerialEntry
     public static boolean areLevelUpMessagesEnabled = true;
     @SerialEntry
-    public static boolean startupCommandsNamesEnabled = true;
+    public static boolean startupCommandsNamesEnabled = false;
     @SerialEntry
-    public static NamesCmdOptions startupCommandsNamesOption = NamesCmdOptions.NAMES_OFF;
+    public static NamesCmdOptions startupCommandsNamesOption = NamesCmdOptions.NAMES_CHAR;
 
     public static YetAnotherConfigLib build() {
         return YetAnotherConfigLib.createBuilder()
@@ -96,16 +94,6 @@ public class ModConfig {
                                         .build())
                                 .build())
                         .group(OptionGroup.createBuilder()
-                                .name(Text.literal("SlashMe Continues Options"))
-                                .description(OptionDescription.of(Text.literal("Options for continuing longer /me's")))
-                                .option(Option.<Boolean>createBuilder()
-                                        .name(Text.literal("Enable SlashMe Continues"))
-                                        .description(OptionDescription.of(Text.literal("Enables/Disables splitting up longer /me messages.")))
-                                        .binding(true, () -> slashMeContinuesEnabled, newVal -> slashMeContinuesEnabled = newVal)
-                                        .controller(BooleanControllerBuilder::create)
-                                        .build())
-                                .build())
-                        .group(OptionGroup.createBuilder()
                                 .name(Text.literal("StartUp Command Options"))
                                 .description(OptionDescription.of(Text.literal("Options for startup commands")))
                                 .option(Option.<Boolean>createBuilder()
@@ -130,6 +118,12 @@ public class ModConfig {
                         .group(OptionGroup.createBuilder()
                                 .name(Text.literal("Skin Settings"))
                                 .description(OptionDescription.of(Text.literal("Skin settings for transformations")))
+                                .option(Option.<Boolean>createBuilder()
+                                        .name(Text.literal("Transformation Enabled"))
+                                        .description(OptionDescription.of(Text.literal("Determines if transformations are enabled or not.")))
+                                        .binding(false, () -> areTransformationsEnabled, newVal -> areTransformationsEnabled = newVal)
+                                        .controller(BooleanControllerBuilder::create)
+                                        .build())
                                 .option(Option.<String>createBuilder()
                                         .name(Text.literal("Regular Skin"))
                                         .description(OptionDescription.of(Text.literal("The URL of the pre-transformation skin. (Auto-Updates)")))

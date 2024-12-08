@@ -1,6 +1,5 @@
 package com.duelco.mixin.client;
 
-import com.duelco.DuelUtilsClient;
 import com.duelco.config.ModConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.listener.ClientPlayPacketListener;
@@ -17,6 +16,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,20 +27,24 @@ public class TitleMixin {
     @Unique
     private static final Logger LOGGER = LoggerFactory.getLogger("title-mixin");
 
+    @Unique
+    private static final List<String> pastLvlUpMessages = new ArrayList<>();
+
     @Final
     @Shadow private Text text;
     @Inject(at = @At("HEAD"), method = "apply(Lnet/minecraft/network/listener/ClientPlayPacketListener;)V")
     private void onTitle(ClientPlayPacketListener clientPlayPacketListener, CallbackInfo ci) {
 
         if (ModConfig.areLevelUpMessagesEnabled) {
-            LOGGER.info("receiving title: {}", text);
+            LOGGER.debug("receiving title: {}", text);
             MinecraftClient client = MinecraftClient.getInstance();
 
             Text lvlUpMsg = this.getLevelUpMessage(text.getString());
 
             if (client.player != null) {
-                if (lvlUpMsg != null && !Objects.equals(lvlUpMsg.getString(), "[]")) {
+                if (lvlUpMsg != null && !Objects.equals(lvlUpMsg.getString(), "[]") && !pastLvlUpMessages.contains(lvlUpMsg.getString())) {
                     client.player.sendMessage(lvlUpMsg, false);
+                    pastLvlUpMessages.add(lvlUpMsg.getString());
                 }
             }
         }
@@ -64,17 +69,17 @@ public class TitleMixin {
 
             // Print the extracted parts
             Text activityText = Text.literal(activity).formatted(Formatting.AQUA);
-            LOGGER.info("Activity: " + activity);
+            LOGGER.debug("Activity: " + activity);
             Text levelText = Text.literal(level).formatted(Formatting.AQUA);
-            LOGGER.info("Level: " + level);
+            LOGGER.debug("Level: " + level);
 
-            return Text.literal("[LevelUp] Your ").formatted(Formatting.GOLD)
+            return Text.literal("[DuelUtils LevelUp] Your ").formatted(Formatting.GOLD)
                     .append(activityText)
                     .append(" level has increased to ").formatted(Formatting.GOLD)
                     .append(levelText)
                     .append("!!!").formatted(Formatting.GOLD);
         } else {
-            LOGGER.info("Subtitle was not a level up notification.");
+            LOGGER.debug("Subtitle was not a level up notification.");
             return null;
         }
     }

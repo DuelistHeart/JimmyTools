@@ -17,6 +17,6 @@ public class DuelUtils implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 
-		LOGGER.info("Hello Fabric world!");
+		LOGGER.debug("Hello Fabric world!");
 	}
 }

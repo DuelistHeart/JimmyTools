@@ -9,22 +9,22 @@ import org.slf4j.LoggerFactory;
 
 public class TransformationHelperHandler {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger("handlers.SkinFlipperHandler");
+    private static final Logger LOGGER = LoggerFactory.getLogger("handlers.TransformationHelper");
     private static final MinecraftClient client = MinecraftClient.getInstance();
     private static final TransformationHelperManager transformationHelperManager = new TransformationHelperManager();
 
     public static void execute() {
         if (client.player != null) {
-            LOGGER.info("Retrieving skin url.");
+            LOGGER.debug("Retrieving skin url.");
             String skinUrl = getPlayerSkin();
-            LOGGER.info("The retrieved player skin is {}", skinUrl);
-            LOGGER.info("Executing transformation.");
+            LOGGER.debug("The retrieved player skin is {}", skinUrl);
+            LOGGER.debug("Executing transformation.");
             String newSkin = transformationHelperManager.handleTransform(getPlayerSkin());
 
             if (newSkin != null) {
-                LOGGER.info("The new player skin is {}", newSkin);
+                LOGGER.debug("The new player skin is {}", newSkin);
                 client.player.networkHandler.sendChatCommand("skin " + newSkin);
-                LOGGER.info("The command is /skin {}", newSkin);
+                LOGGER.debug("The command is /skin {}", newSkin);
                 ModConfig.HANDLER.save();
             }
         } else {
