@@ -4,28 +4,15 @@ import com.duelco._enum.Screen;
 import com.duelco.config.ModConfig;
 import com.duelco.handlers.BagHandler;
 import com.duelco.handlers.TransformationHelperHandler;
-import com.duelco.ui.screen.BingoItemsScreen;
-import com.duelco.ui.screen.BingoScreen;
 import com.duelco.ui.screen.ScreenHandler;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.fabricmc.fabric.api.client.message.v1.ClientSendMessageEvents;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.decoration.DisplayEntity;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal;
-import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.argument;
 
 public class DuelUtilsClient implements ClientModInitializer {
 	private static KeyBinding skinFlipperToggleKeybind;
@@ -45,7 +32,9 @@ public class DuelUtilsClient implements ClientModInitializer {
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (skinFlipperToggleKeybind.wasPressed()) {
-				TransformationHelperHandler.execute();
+				if (ModConfig.areTransformationsEnabled) {
+					TransformationHelperHandler.execute();
+				}
 			}
 			while (bingoScreenKeybind.wasPressed()) {
 				ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, client);
@@ -131,6 +120,4 @@ public class DuelUtilsClient implements ClientModInitializer {
 				"category.duelutils"
 		));
 	}
-
-
 }
