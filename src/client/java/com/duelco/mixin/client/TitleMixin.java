@@ -1,6 +1,5 @@
 package com.duelco.mixin.client;
 
-import com.duelco.DuelUtilsClient;
 import com.duelco.config.ModConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.listener.ClientPlayPacketListener;
@@ -37,7 +36,7 @@ public class TitleMixin {
     private void onTitle(ClientPlayPacketListener clientPlayPacketListener, CallbackInfo ci) {
 
         if (ModConfig.areLevelUpMessagesEnabled) {
-            LOGGER.info("receiving title: {}", text);
+            LOGGER.debug("receiving title: {}", text);
             MinecraftClient client = MinecraftClient.getInstance();
 
             Text lvlUpMsg = this.getLevelUpMessage(text.getString());
@@ -70,9 +69,9 @@ public class TitleMixin {
 
             // Print the extracted parts
             Text activityText = Text.literal(activity).formatted(Formatting.AQUA);
-            LOGGER.info("Activity: " + activity);
+            LOGGER.debug("Activity: " + activity);
             Text levelText = Text.literal(level).formatted(Formatting.AQUA);
-            LOGGER.info("Level: " + level);
+            LOGGER.debug("Level: " + level);
 
             return Text.literal("[DuelUtils LevelUp] Your ").formatted(Formatting.GOLD)
                     .append(activityText)
@@ -80,7 +79,7 @@ public class TitleMixin {
                     .append(levelText)
                     .append("!!!").formatted(Formatting.GOLD);
         } else {
-            LOGGER.info("Subtitle was not a level up notification.");
+            LOGGER.debug("Subtitle was not a level up notification.");
             return null;
         }
     }
