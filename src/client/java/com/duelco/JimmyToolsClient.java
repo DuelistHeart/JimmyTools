@@ -14,7 +14,7 @@ import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class DuelUtilsClient implements ClientModInitializer {
+public class JimmyToolsClient implements ClientModInitializer {
 	private static KeyBinding skinFlipperToggleKeybind;
 	private static KeyBinding bingoScreenKeybind;
 	private static KeyBinding modMenuKeybind;
@@ -23,7 +23,7 @@ public class DuelUtilsClient implements ClientModInitializer {
 	private static KeyBinding bagThreeKeybind;
 	private static KeyBinding bagFourKeybind;
 
-	public static final Logger LOGGER = LoggerFactory.getLogger("duelutils-client");
+	public static final Logger LOGGER = LoggerFactory.getLogger("jimmytools-client");
 
 	@Override
 	public void onInitializeClient() {
@@ -66,52 +66,52 @@ public class DuelUtilsClient implements ClientModInitializer {
 
 	private void registerKeybinds() {
 		skinFlipperToggleKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.duelutils.flipskin", // The translation key of the keybinding's name
+				"key.jimmytools.flipskin", // The translation key of the keybinding's name
 				InputUtil.Type.KEYSYM, // The type of the keybinding, KEYSYM for keyboard, MOUSE for mouse.
 				GLFW.GLFW_KEY_K, // The keycode of the key
-				"category.duelutils" // The translation key of the keybinding's category.
+				"category.jimmytools" // The translation key of the keybinding's category.
 		));
 
 		bingoScreenKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.duelutils.bingo_screen",
+				"key.jimmytools.bingo_screen",
 				InputUtil.Type.KEYSYM,
 				GLFW.GLFW_KEY_B,
-				"category.duelutils"
+				"category.jimmytools"
 		));
 
 		modMenuKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.duelutils.modmenu",
+				"key.jimmytools.modmenu",
 				InputUtil.Type.KEYSYM,
 				GLFW.GLFW_KEY_M,
-				"category.duelutils"
+				"category.jimmytools"
 		));
 
 		bagOneKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.duelutils.openbagone",
+				"key.jimmytools.openbagone",
 				InputUtil.Type.KEYSYM,
 				GLFW.GLFW_KEY_UP,
-				"category.duelutils"
+				"category.jimmytools"
 		));
 
 		bagTwoKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.duelutils.openbagtwo",
+				"key.jimmytools.openbagtwo",
 				InputUtil.Type.KEYSYM,
 				GLFW.GLFW_KEY_RIGHT,
-				"category.duelutils"
+				"category.jimmytools"
 		));
 
 		bagThreeKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.duelutils.openbagthree",
+				"key.jimmytools.openbagthree",
 				InputUtil.Type.KEYSYM,
 				GLFW.GLFW_KEY_DOWN,
-				"category.duelutils"
+				"category.jimmytools"
 		));
 
 		bagFourKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.duelutils.openbagfour",
+				"key.jimmytools.openbagfour",
 				InputUtil.Type.KEYSYM,
 				GLFW.GLFW_KEY_LEFT,
-				"category.duelutils"
+				"category.jimmytools"
 		));
 	}
 }

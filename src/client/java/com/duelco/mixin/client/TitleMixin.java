@@ -73,7 +73,7 @@ public class TitleMixin {
             Text levelText = Text.literal(level).formatted(Formatting.AQUA);
             LOGGER.debug("Level: " + level);
 
-            return Text.literal("[DuelUtils LevelUp] Your ").formatted(Formatting.GOLD)
+            return Text.literal("[JimmyTools] Your ").formatted(Formatting.GOLD)
                     .append(activityText)
                     .append(" level has increased to ").formatted(Formatting.GOLD)
                     .append(levelText)

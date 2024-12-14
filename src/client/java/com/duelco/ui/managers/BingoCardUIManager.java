@@ -1,6 +1,6 @@
 package com.duelco.ui.managers;
 
-import com.duelco.DuelUtilsClient;
+import com.duelco.JimmyToolsClient;
 import com.duelco.config.ModConfig;
 import com.duelco.obj.BingoCard;
 import io.wispforest.owo.ui.component.Components;
@@ -46,7 +46,7 @@ public class BingoCardUIManager {
                         .color(Color.ofRgb(ModConfig.bingoBackgroundColor.getRGB()))
                         .fill(true)
         ).child(
-                Components.texture(Identifier.of("duelutils","ui/bingo_header.png"), 1, 1, 255, 256)
+                Components.texture(Identifier.of("jimmytools","ui/bingo_header.png"), 1, 1, 255, 256)
                         .sizing(Sizing.fixed(100), Sizing.fixed(20))
                         .positioning(Positioning.relative(50, 10))
                         .zIndex(200)
