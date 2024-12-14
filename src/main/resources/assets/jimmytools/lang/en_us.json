@@ -3,7 +3,7 @@
   "jimmytools.config.startupcommands.namesoptions.names_on": "/names on",
   "jimmytools.config.startupcommands.namesoptions.names_char": "/names character",
   "category.jimmytools": "JimmyTools",
-  "key.jimmytools.flipskin": "Transform Skin",
+  "key.jimmytools.transform": "Transform Skin",
   "key.jimmytools.bingo_screen": "Open Bingo Screen",
   "key.jimmytools.modmenu": "Open JimmyTools Config",
   "key.jimmytools.openbagone": "Open Bag 1",

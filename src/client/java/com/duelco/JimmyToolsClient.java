@@ -15,7 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class JimmyToolsClient implements ClientModInitializer {
-	private static KeyBinding skinFlipperToggleKeybind;
+	private static KeyBinding transformationToggleKeybind;
 	private static KeyBinding bingoScreenKeybind;
 	private static KeyBinding modMenuKeybind;
 	private static KeyBinding bagOneKeybind;
@@ -31,7 +31,7 @@ public class JimmyToolsClient implements ClientModInitializer {
 		registerKeybinds();
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
-			while (skinFlipperToggleKeybind.wasPressed()) {
+			while (transformationToggleKeybind.wasPressed()) {
 				if (ModConfig.areTransformationsEnabled) {
 					TransformationHelperHandler.execute();
 				}
@@ -65,8 +65,8 @@ public class JimmyToolsClient implements ClientModInitializer {
 	}
 
 	private void registerKeybinds() {
-		skinFlipperToggleKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.jimmytools.flipskin", // The translation key of the keybinding's name
+		transformationToggleKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+				"key.jimmytools.transform", // The translation key of the keybinding's name
 				InputUtil.Type.KEYSYM, // The type of the keybinding, KEYSYM for keyboard, MOUSE for mouse.
 				GLFW.GLFW_KEY_K, // The keycode of the key
 				"category.jimmytools" // The translation key of the keybinding's category.
