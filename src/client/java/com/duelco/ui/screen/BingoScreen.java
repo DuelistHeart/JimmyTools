@@ -13,6 +13,7 @@ import io.wispforest.owo.ui.container.StackLayout;
 import io.wispforest.owo.ui.core.*;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 public class BingoScreen extends BaseOwoScreen<FlowLayout> {
@@ -58,29 +59,29 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
                 .horizontalAlignment(HorizontalAlignment.CENTER);
 
         buttonGroup.child(
-                Components.button(Text.of("Clear Marks"), buttonComponent -> {
+                Components.button(Text.translatable("buttons.jimmytools.bingo.clear_marks"),buttonComponent -> {
                     bingoMarkerManager.clearMarkers();
                     ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, client);
                 }).margins(Insets.of(2))
         ).child(
-                Components.button(Text.of("Generate Card"), buttonComponent -> {
+                Components.button(Text.translatable("buttons.jimmytools.bingo.generate_cards"), buttonComponent -> {
                     bingoManager.generateCard();
                     ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, client);
                 }).margins(Insets.of(2))
         ).child(
-                Components.button(Text.of("Reset"), buttonComponent -> {
+                Components.button(Text.translatable("buttons.jimmytools.bingo.reset"), buttonComponent -> {
                     bingoMarkerManager.clearMarkers();
                     bingoManager.resetCards();
                     ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, client);
                 }).margins(Insets.of(2))
         ).child(
-                Components.button(Text.of("Item List"), buttonComponent -> {
+                Components.button(Text.translatable("buttons.jimmytools.bingo.item_list"), buttonComponent -> {
                     ScreenHandler.displayScreen(Screen.BINGO_ITEMS_SCREEN, client);
                 }).margins(Insets.of(2))
         );
 
         rootComponent.child(
-                Components.label(Text.of("Bingo Screen"))
+                Components.label(Text.translatable("screen.jimmytools.bingo.title"))
         ).child(
                 bingoCardsAndMarkerLayout
         ).child(

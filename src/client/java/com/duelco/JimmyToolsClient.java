@@ -66,52 +66,52 @@ public class JimmyToolsClient implements ClientModInitializer {
 
 	private void registerKeybinds() {
 		transformationToggleKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.jimmytools.transform", // The translation key of the keybinding's name
+				"keybinds.key.jimmytools.transform", // The translation key of the keybinding's name
 				InputUtil.Type.KEYSYM, // The type of the keybinding, KEYSYM for keyboard, MOUSE for mouse.
 				GLFW.GLFW_KEY_K, // The keycode of the key
-				"category.jimmytools" // The translation key of the keybinding's category.
+				"keybinds.category.jimmytools" // The translation key of the keybinding's category.
 		));
 
 		bingoScreenKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.jimmytools.bingo_screen",
+				"keybinds.key.jimmytools.bingo_screen",
 				InputUtil.Type.KEYSYM,
 				GLFW.GLFW_KEY_B,
-				"category.jimmytools"
+				"keybinds.category.jimmytools"
 		));
 
 		modMenuKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.jimmytools.modmenu",
+				"keybinds.key.jimmytools.modmenu",
 				InputUtil.Type.KEYSYM,
 				GLFW.GLFW_KEY_M,
-				"category.jimmytools"
+				"keybinds.category.jimmytools"
 		));
 
 		bagOneKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.jimmytools.openbagone",
+				"keybinds.key.jimmytools.openbagone",
 				InputUtil.Type.KEYSYM,
 				GLFW.GLFW_KEY_UP,
-				"category.jimmytools"
+				"keybinds.category.jimmytools"
 		));
 
 		bagTwoKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.jimmytools.openbagtwo",
+				"keybinds.key.jimmytools.openbagtwo",
 				InputUtil.Type.KEYSYM,
 				GLFW.GLFW_KEY_RIGHT,
-				"category.jimmytools"
+				"keybinds.category.jimmytools"
 		));
 
 		bagThreeKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.jimmytools.openbagthree",
+				"keybinds.key.jimmytools.openbagthree",
 				InputUtil.Type.KEYSYM,
 				GLFW.GLFW_KEY_DOWN,
-				"category.jimmytools"
+				"keybinds.category.jimmytools"
 		));
 
 		bagFourKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.jimmytools.openbagfour",
+				"keybinds.key.jimmytools.openbagfour",
 				InputUtil.Type.KEYSYM,
 				GLFW.GLFW_KEY_LEFT,
-				"category.jimmytools"
+				"keybinds.category.jimmytools"
 		));
 	}
 }
