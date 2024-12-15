@@ -51,7 +51,7 @@ public class BingoItemsScreen extends BaseOwoScreen<FlowLayout> {
         }
 
         rootComponent.child(
-                Components.label(Text.of("Bingo Items"))
+                Components.label(Text.translatable("screen.jimmytools.bingoitems.title"))
         ).child(
                 Containers.verticalScroll(Sizing.fixed(500), Sizing.fixed(200), bingoPossibleItemsContainer)
                         .scrollbar(ScrollContainer.Scrollbar.vanilla())

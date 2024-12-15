@@ -14,9 +14,9 @@ import java.awt.*;
 
 public class ModConfig {
     public static ConfigClassHandler<ModConfig> HANDLER = ConfigClassHandler.createBuilder(ModConfig.class)
-            .id(Identifier.of("duelutils", "config"))
+            .id(Identifier.of("jimmytools", "config"))
                     .serializer(config -> GsonConfigSerializerBuilder.create(config)
-                            .setPath(FabricLoader.getInstance().getConfigDir().resolve("duelutils.json5"))
+                            .setPath(FabricLoader.getInstance().getConfigDir().resolve("jimmytools.json5"))
                             .setJson5(true)
                             .build())
                     .build();
@@ -46,7 +46,7 @@ public class ModConfig {
 
     public static YetAnotherConfigLib build() {
         return YetAnotherConfigLib.createBuilder()
-                .title(Text.literal("DuelUtils Config"))
+                .title(Text.literal("JimmyTools Config"))
                 .category(ConfigCategory.createBuilder()
                         .name(Text.literal("Bingo"))
                         .tooltip(Text.literal("Bingo config"))
@@ -108,7 +108,7 @@ public class ModConfig {
                                         .binding(NamesCmdOptions.NAMES_OFF, () -> startupCommandsNamesOption, newVal -> startupCommandsNamesOption = newVal)
                                         .controller(opt -> EnumControllerBuilder.create(opt)
                                                 .enumClass(NamesCmdOptions.class)
-                                                .formatValue(v -> Text.translatable("duelutils.config.startupcommands.namesoptions." + v.name().toLowerCase())))
+                                                .formatValue(v -> Text.translatable("jimmytools.config.startupcommands.namesoptions." + v.name().toLowerCase())))
                                         .build())
                                 .build())
                         .build())

@@ -1,33 +1,33 @@
 {
 	"schemaVersion": 1,
-	"id": "duelutils",
+	"id": "jimmytools",
 	"version": "${version}",
-	"name": "DuelUtils",
+	"name": "JimmyTools",
 	"description": "A mod full of QoL and utility features for LoM2.",
 	"authors": [
 		"DuelistHeart"
 	],
 	"contact": {
-		"sources": "https://github.com/DuelistHeart/DuelUtils"
+		"sources": "https://github.com/DuelistHeart/JimmyTools"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/duelutils/icon.png",
+	"icon": "assets/jimmytools/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.duelco.DuelUtils"
+			"com.duelco.JimmyTools"
 		],
 		"client": [
-          "com.duelco.DuelUtilsClient"
+          "com.duelco.JimmyToolsClient"
 		],
 		"modmenu": [
 			"com.duelco.integrations.ModMenuIntegration"
 		]
 	},
 	"mixins": [
-		"duelutils.mixins.json",
+		"jimmytools.mixins.json",
 		{
-			"config": "duelutils.client.mixins.json",
+			"config": "jimmytools.client.mixins.json",
 			"environment": "client"
 		}
 	],

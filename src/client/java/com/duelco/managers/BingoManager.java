@@ -1,6 +1,6 @@
 package com.duelco.managers;
 
-import com.duelco.DuelUtilsClient;
+import com.duelco.JimmyToolsClient;
 import com.duelco._enum.Screen;
 import com.duelco.config.ModConfig;
 import com.duelco.obj.BingoCard;

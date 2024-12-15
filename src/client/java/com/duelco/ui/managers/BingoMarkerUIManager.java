@@ -29,7 +29,7 @@ public class BingoMarkerUIManager {
     }
 
     private Component getMarkerComponent() {
-        return Components.texture(Identifier.of("duelutils", "ui/marker.png"), 1, 1, 256, 256)
+        return Components.texture(Identifier.of("jimmytools", "ui/marker.png"), 1, 1, 256, 256)
                 .sizing(Sizing.fixed(MARKER_SIZE))
                 .zIndex(MARKER_INDEX);
     }

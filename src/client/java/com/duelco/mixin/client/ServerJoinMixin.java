@@ -1,6 +1,6 @@
 package com.duelco.mixin.client;
 
-import com.duelco.DuelUtilsClient;
+import com.duelco.JimmyToolsClient;
 import com.duelco.config.ModConfig;
 import com.duelco.managers.StartupCmdManager;
 import net.minecraft.client.MinecraftClient;

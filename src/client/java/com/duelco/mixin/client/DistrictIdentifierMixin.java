@@ -12,27 +12,27 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class DistrictIdentifierMixin {
     @Inject(method = "apply", at = @At("HEAD"))
     private void onApply(CallbackInfo info) {
-        PlayerListHeaderS2CPacket packet = (PlayerListHeaderS2CPacket) (Object) this;
-        Text footer = packet.footer();
-
-        // Here you can handle the header and footer values
-        if (footer.getString().contains("(")) {
-            if (footer.getString().indexOf("(") + 1 > 0 && footer.getString().indexOf(")") > 0) {
-                String district = footer.getString().substring(footer.getString().indexOf("(") + 1, footer.getString().indexOf(")"));
-//                System.out.println("District: " + district);
-
-                // Store or manipulate the footer value as needed
-                // For example, store it in a static variable for later use
-                TabListHandler.serverFooter = footer.getString();
-            }
-        } else {
-            if (footer.getString().indexOf("(") + 1 > 0 && footer.getString().indexOf(")") > 0) {
-                String district = footer.getString().split("\n")[0];
-
-                // Store or manipulate the footer value as needed
-                // For example, store it in a static variable for later use
-                TabListHandler.serverFooter = footer.getString();
-            }
-        }
+//        PlayerListHeaderS2CPacket packet = (PlayerListHeaderS2CPacket) (Object) this;
+//        Text footer = packet.footer();
+//
+//        // Here you can handle the header and footer values
+//        if (footer.getString().contains("(")) {
+//            if (footer.getString().indexOf("(") + 1 > 0 && footer.getString().indexOf(")") > 0) {
+//                String district = footer.getString().substring(footer.getString().indexOf("(") + 1, footer.getString().indexOf(")"));
+////                System.out.println("District: " + district);
+//
+//                // Store or manipulate the footer value as needed
+//                // For example, store it in a static variable for later use
+//                TabListHandler.serverFooter = footer.getString();
+//            }
+//        } else {
+//            if (footer.getString().indexOf("(") + 1 > 0 && footer.getString().indexOf(")") > 0) {
+//                String district = footer.getString().split("\n")[0];
+//
+//                // Store or manipulate the footer value as needed
+//                // For example, store it in a static variable for later use
+//                TabListHandler.serverFooter = footer.getString();
+//            }
+//        }
     }
 }
