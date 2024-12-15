@@ -1,5 +1,6 @@
 # JimmyTools
-[![Fabric Mod](https://img.shields.io/badge/modloader-fabric-eeeeee)](https://fabricmc.net/use/)
+[![Fabric Mod](https://img.shields.io/badge/modloader-fabric-99999?logoColor=%23E6E6FA&labelColor=gray&color=%23ccccff
+)](https://fabricmc.net/use/)
 [![Latest Version](https://img.shields.io/modrinth/v/duelutils?color=blueviolet&label=latest%20version)](https://modrinth.com/mod/jimmytools)
 
 ## Description
