@@ -31,6 +31,7 @@ public class BingoPossibleItemsList {
         items.add(new BingoItem(Items.RABBIT_FOOT.getDefaultStack(), 8, false, "Penny")); // Penny
         items.add(new BingoItem(Items.CHERRY_SAPLING.getDefaultStack(), 0, false, "Cherry Sapling")); // Cherry Sapling
         items.add(new BingoItem(Items.MUSIC_DISC_CAT.getDefaultStack(), 22, false, "Holy Cleanser")); // Holy Cleanser
+        items.add(new BingoItem(Items.PAPER.getDefaultStack(), 0, false, "Holy Writs")); // Holy Writs
         items.add(new BingoItem(Items.MUSIC_DISC_CAT.getDefaultStack(), 52, false, "Deck of Cards")); // Deck of Cards
         items.add(new BingoItem(Items.RABBIT_FOOT.getDefaultStack(), 13, false, "Muk")); // Muk
         items.add(new BingoItem(Items.MUSIC_DISC_CAT.getDefaultStack(), 4, false, "Elven Dagger")); // Elven Dagger
