@@ -1,40 +1,44 @@
 package com.duelco.obj;
 
+import com.duelco.handlers.ItemHandler;
 import net.minecraft.component.*;
 import net.minecraft.component.type.CustomModelDataComponent;
 import net.minecraft.item.ItemStack;
 
 public class BingoItem {
-    private ItemStack item;
-    private boolean isMarked;
+    // Mark item as ignorable for Gson
+    private String baseItem;
     private boolean isFreeSpace;
     private int customModelDataNum;
     private String name;
 
-    public BingoItem(ItemStack item, int customModelDataNum, boolean isMarked, String name) {
-        CustomModelDataComponent ItemComponents= new CustomModelDataComponent(customModelDataNum);
-        item.set(DataComponentTypes.CUSTOM_MODEL_DATA, ItemComponents);
+    public BingoItem(String baseItem, int customModelDataNum, String name) {
 
-        this.item = item;
-        this.isMarked = isMarked;
+        this.baseItem = baseItem;
+        this.customModelDataNum = customModelDataNum;
         this.isFreeSpace = false;
         this.name = name;
     }
 
     public BingoItem(BingoItem bingoItem) {
-        this.item = bingoItem.getItem();
-        this.isMarked = bingoItem.isMarked();
+        this.baseItem = bingoItem.getBaseItem();
         this.isFreeSpace = bingoItem.isFreeSpace();
         this.customModelDataNum = bingoItem.getCustomModelDataNum();
         this.name = bingoItem.getName();
     }
 
     public ItemStack getItem() {
+        CustomModelDataComponent ItemComponents= new CustomModelDataComponent(customModelDataNum);
+        ItemStack item = ItemHandler.getItemFromString(baseItem);
+        item.set(DataComponentTypes.CUSTOM_MODEL_DATA, ItemComponents);
         return item;
     }
 
-    public void setItem(ItemStack item) {
-        this.item = item;
+    public void setBaseItem(String baseItem) {
+        this.baseItem = baseItem;
+    }
+    public String getBaseItem() {
+        return baseItem;
     }
 
     public boolean isFreeSpace() {
@@ -47,14 +51,6 @@ public class BingoItem {
 
     public void setCustomModelDataNum(int customModelDataNum) {
         this.customModelDataNum = customModelDataNum;
-    }
-
-    public boolean isMarked() {
-        return isMarked;
-    }
-
-    public void setMarked(boolean marked) {
-        this.isMarked = marked;
     }
 
     public void setFreeSpace(boolean isFreeSpace) {

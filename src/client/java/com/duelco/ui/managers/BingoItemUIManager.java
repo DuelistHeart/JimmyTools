@@ -34,13 +34,6 @@ public class BingoItemUIManager {
             );
         }
 
-        if (bingoItem.isMarked()) {
-            sampleSlot.child(
-                    Components.texture(Identifier.of("jimmytools", "ui/marker.png"), 1, 1, 256, 256)
-                            .sizing(Sizing.fixed(20))
-            );
-        }
-
         return sampleSlot;
     }
 }
