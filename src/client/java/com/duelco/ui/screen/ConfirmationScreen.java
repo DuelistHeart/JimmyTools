@@ -13,10 +13,12 @@ import org.jetbrains.annotations.NotNull;
 public class ConfirmationScreen extends BaseOwoScreen<FlowLayout> {
 
     private final Runnable onConfirm;
+    private final Runnable onReturn;
 
-    ConfirmationScreen(String title, Runnable onConfirm) {
+    ConfirmationScreen(String title, Runnable onConfirm, Runnable onReturn) {
         super(Text.of(title));
         this.onConfirm = onConfirm;
+        this.onReturn = onReturn;
     }
 
     @Override
@@ -35,12 +37,22 @@ public class ConfirmationScreen extends BaseOwoScreen<FlowLayout> {
                 .surface(Surface.VANILLA_TRANSLUCENT)
                 .alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
 
-        rootComponent.child(
-                Components.label(Text.translatable("screen.jimmytools.bingo.title"))
-        ).child(
+        FlowLayout buttonGroup = (FlowLayout) Containers.horizontalFlow(Sizing.fill(), Sizing.fixed(22))
+                .horizontalAlignment(HorizontalAlignment.CENTER)
+                .margins(Insets.of(5));
+
+        buttonGroup.child(
                 Components.button(Text.of("Confirm"), buttonComponent -> onConfirm.run())
+                        .margins(Insets.of(2))
         ).child(
-                Components.button(Text.of("Return"), buttonComponent -> ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, MinecraftClient.getInstance()))
+                Components.button(Text.of("Return"), buttonComponent -> onReturn.run())
+                        .margins(Insets.of(2))
+        );
+
+        rootComponent.child(
+                Components.label(Text.of(this.title))
+        ).child(
+                buttonGroup
         );
     }
 }

@@ -70,9 +70,11 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
                 }).margins(Insets.of(2))
         ).child(
                 Components.button(Text.translatable("buttons.jimmytools.bingo.reset"), buttonComponent -> {
-                    MinecraftClient.getInstance().setScreen(new ConfirmationScreen("Are you sure you want to reset the bingo cards?", () -> {
+                    MinecraftClient.getInstance().setScreen(new ConfirmationScreen("Are you sure you want to reset (delete) your bingo cards?", () -> {
                         bingoMarkerManager.clearMarkers();
                         bingoManager.resetCards();
+                        ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, client);
+                    }, () -> {
                         ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, client);
                     }));
                 }).margins(Insets.of(2))
