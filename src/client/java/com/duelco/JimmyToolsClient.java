@@ -4,12 +4,15 @@ import com.duelco._enum.Screen;
 import com.duelco.config.ModConfig;
 import com.duelco.handlers.BagHandler;
 import com.duelco.handlers.TransformationHelperHandler;
+import com.duelco.managers.BingoListener;
 import com.duelco.ui.screen.ScreenHandler;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
+import net.minecraft.resource.ResourceType;
 import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +32,7 @@ public class JimmyToolsClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		ModConfig.HANDLER.load();
 		registerKeybinds();
+		ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(new BingoListener());
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (transformationToggleKeybind.wasPressed()) {

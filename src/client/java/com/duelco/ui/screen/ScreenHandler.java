@@ -12,4 +12,8 @@ public class ScreenHandler {
             case INVENTORY_SCREEN -> client.setScreen(new InventoryScreen(client.player));
         }
     }
+
+    public static void displayConfirmationScreen(MinecraftClient client, String title, Runnable onConfirm, Runnable onReturn) {
+        client.setScreen(new ConfirmationScreen(title, onConfirm, onReturn));
+    }
 }
