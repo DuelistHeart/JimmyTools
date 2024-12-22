@@ -4,6 +4,7 @@ import com.duelco._enum.Screen;
 import com.duelco.handlers.ImageSelection;
 import com.duelco.handlers.ScreenCaptureHandler;
 import com.duelco.managers.BingoManager;
+import com.duelco.managers.ToastManager;
 import com.duelco.obj.BingoCard;
 import com.duelco.ui.managers.BingoCardUIManager;
 import com.duelco.ui.managers.BingoMarkerUIManager;
@@ -63,6 +64,7 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
         buttonGroup.child(
                 Components.button(Text.of("\uD83D\uDCF7"), buttonComponent -> {
                     ImageSelection.copyImageToClipboard(ScreenCaptureHandler.captureFramebuffer(MinecraftClient.getInstance().getFramebuffer()));
+                    ToastManager.displayToast(Text.of("Copied Bingo Cards"), Text.of("Your bingo cards were copied to clipboard"));
                 }).margins(Insets.of(2))
         ).child(
                 Components.button(Text.translatable("buttons.jimmytools.bingo.clear_marks"),buttonComponent -> {
