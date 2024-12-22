@@ -18,9 +18,14 @@ public class BingoMarkerUIManager {
     }
 
     public void addMarker(int x, int y) {
-        bingoMarkersLayout.child(
-                getMarkerComponent().positioning(Positioning.absolute(x-(MARKER_SIZE/2), y-(MARKER_SIZE/2)))
+        Component markerComponent = getMarkerComponent().positioning(Positioning.absolute(x-(MARKER_SIZE/2), y-(MARKER_SIZE/2)));
+        markerComponent.mouseDown().subscribe((mx, my, btn) -> {
+            markerComponent.remove();
+            return true;
+        });
 
+        bingoMarkersLayout.child(
+                markerComponent
         );
     }
 
