@@ -1,8 +1,6 @@
 package com.duelco.managers;
 
 import com.duelco.config.ModConfig;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.toast.SystemToast;
 import net.minecraft.text.Text;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,11 +18,7 @@ public class TransformationHelperManager {
                 return ModConfig.transformationSkin;
             }
         } else {
-            MinecraftClient.getInstance().getToastManager().add(new SystemToast(
-                    SystemToast.Type.CHUNK_SAVE_FAILURE,
-                    Text.of("No Transformation Skin"),
-                    Text.of("Set a transformation skin in the config.")
-            ));
+            ToastManager.displayToast(Text.of("Transformation Error"), Text.of("Transformation skin is not set in the config file."));
             return null;
         }
     }

@@ -1,10 +1,8 @@
 package com.duelco.managers;
 
-import com.duelco.JimmyToolsClient;
 import com.duelco._enum.Screen;
 import com.duelco.config.ModConfig;
 import com.duelco.obj.BingoCard;
-import com.duelco.ui.screen.BingoScreen;
 import com.duelco.ui.screen.ScreenHandler;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.toast.SystemToast;
@@ -21,11 +19,7 @@ public class BingoManager {
             this.bingoCards.add(new BingoCard());
             ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, MinecraftClient.getInstance());
         } else {
-            MinecraftClient.getInstance().getToastManager().add(new SystemToast(
-                    SystemToast.Type.CHUNK_SAVE_FAILURE,
-                    Text.of("Max Cards Reached"),
-                    Text.of("Max cards currently set to " + ModConfig.bingoMaxCards)
-            ));
+            ToastManager.displayToast(Text.of("Max Cards Reached"), Text.of("Max cards currently set to " + ModConfig.bingoMaxCards));
         }
     }
 
