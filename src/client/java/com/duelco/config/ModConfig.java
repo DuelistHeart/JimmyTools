@@ -38,7 +38,7 @@ public class ModConfig {
     public static String transformationSkin = "";
 
     @SerialEntry
-    public static boolean areLevelUpMessagesEnabled = true;
+    public static boolean areLevelUpMessagesEnabled = false;
     @SerialEntry
     public static boolean startupCommandsNamesEnabled = false;
     @SerialEntry
