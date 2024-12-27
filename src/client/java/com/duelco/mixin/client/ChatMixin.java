@@ -16,15 +16,15 @@ import java.util.Arrays;
 
 @Mixin(ClientPlayNetworkHandler.class)
 public abstract class ChatMixin {
-    @Inject(method = "onGameMessage", at = @At("HEAD"), cancellable = true)
-    private void interceptGameMessage(GameMessageS2CPacket packet, CallbackInfo ci) {
-
-        try {
-            String playerName = ((MutableText) (Arrays.stream(((TranslatableTextContent) packet.content().getContent()).getArgs()).findFirst().get())).getSiblings().getFirst().getStyle().getHoverEvent().getValue(HoverEvent.Action.SHOW_TEXT).getSiblings().get(1).getString();
-            String characterName = ((MutableText) (Arrays.stream(((TranslatableTextContent) packet.content().getContent()).getArgs()).findFirst().get())).getSiblings().getFirst().getString();
-            CharacterMapperManager.addMapping(playerName, characterName);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    @Inject(method = "onGameMessage", at = @At("HEAD"), cancellable = true)
+//    private void interceptGameMessage(GameMessageS2CPacket packet, CallbackInfo ci) {
+//
+//        try {
+//            String playerName = ((MutableText) (Arrays.stream(((TranslatableTextContent) packet.content().getContent()).getArgs()).findFirst().get())).getSiblings().getFirst().getStyle().getHoverEvent().getValue(HoverEvent.Action.SHOW_TEXT).getSiblings().get(1).getString();
+//            String characterName = ((MutableText) (Arrays.stream(((TranslatableTextContent) packet.content().getContent()).getArgs()).findFirst().get())).getSiblings().getFirst().getString();
+//            CharacterMapperManager.addMapping(playerName, characterName);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
