@@ -4,6 +4,7 @@ import com.duelco._enum.Screen;
 import com.duelco.handlers.ImageSelection;
 import com.duelco.handlers.ScreenCaptureHandler;
 import com.duelco.managers.BingoManager;
+import com.duelco.managers.DataManager;
 import com.duelco.managers.ToastManager;
 import com.duelco.obj.BingoCard;
 import com.duelco.ui.managers.BingoCardUIManager;
@@ -16,11 +17,9 @@ import io.wispforest.owo.ui.container.StackLayout;
 import io.wispforest.owo.ui.core.*;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 public class BingoScreen extends BaseOwoScreen<FlowLayout> {
-    private static final BingoManager bingoManager = new BingoManager();
     private static final BingoMarkerUIManager bingoMarkerManager = new BingoMarkerUIManager();
 
     @Override
@@ -54,7 +53,7 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
                     return true;
                 });
 
-        for (BingoCard bingoCard : bingoManager.getCards()) {
+        for (BingoCard bingoCard : BingoManager.getCards()) {
             bingoCardsLayout.child(BingoCardUIManager.buildBingoCardComponent(bingoCard));
         }
 
@@ -73,7 +72,7 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
                 }).margins(Insets.of(2))
         ).child(
                 Components.button(Text.translatable("buttons.jimmytools.bingo.generate_cards"), buttonComponent -> {
-                    bingoManager.generateCard();
+                    BingoManager.generateCard();
                     ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, client);
                 }).margins(Insets.of(2))
         ).child(
@@ -81,7 +80,7 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
                     ScreenHandler.displayConfirmationScreen(MinecraftClient.getInstance(),"Are you sure you want to reset (delete) your bingo cards?",
                     () -> {
                         bingoMarkerManager.clearMarkers();
-                        bingoManager.resetCards();
+                        BingoManager.resetCards();
                         ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, client);
                     }, () -> {
                         ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, client);

@@ -5,6 +5,7 @@ import com.duelco.config.ModConfig;
 import com.duelco.handlers.BagHandler;
 import com.duelco.handlers.TransformationHelperHandler;
 import com.duelco.managers.BingoListener;
+import com.duelco.managers.DataManager;
 import com.duelco.ui.screen.ScreenHandler;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -32,6 +33,7 @@ public class JimmyToolsClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		ModConfig.HANDLER.load();
 		registerKeybinds();
+		DataManager.loadData();
 		ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(new BingoListener());
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
