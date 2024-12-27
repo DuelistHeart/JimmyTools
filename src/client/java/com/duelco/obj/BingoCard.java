@@ -3,9 +3,16 @@ package com.duelco.obj;
 import java.util.List;
 
 public class BingoCard {
-    private final List<BingoItem> items;
+    private List<BingoItem> items;
+
+    public BingoCard(BingoCard bingoCard) {
+        this.items = bingoCard.getItems();
+    }
 
     public BingoCard() {
+    }
+
+    public void initItems() {
         this.items = BingoPossibleItemsList.generateBingoItemsList();
     }
 

@@ -5,6 +5,9 @@ import net.minecraft.component.*;
 import net.minecraft.component.type.CustomModelDataComponent;
 import net.minecraft.item.ItemStack;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BingoItem {
     // Mark item as ignorable for Gson
     private String baseItem;
