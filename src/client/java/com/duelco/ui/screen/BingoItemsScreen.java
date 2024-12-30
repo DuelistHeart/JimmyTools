@@ -37,7 +37,10 @@ public class BingoItemsScreen extends BaseOwoScreen<FlowLayout> {
 
         updateItemList();
 
-        TextBoxComponent searchFieldComponent = Components.textBox(Sizing.fixed(250)).text(BingoPossibleItemsList.getFilter());
+        TextBoxComponent searchFieldComponent = Components.textBox(Sizing.fixed(250))
+                .text(BingoPossibleItemsList.getFilter());
+
+        searchFieldComponent.setPlaceholder(Text.of("Search..."));
 
         searchFieldComponent.onChanged().subscribe((text) -> {
             BingoPossibleItemsList.setFilter(text);
