@@ -37,6 +37,8 @@ public class ItemHandler {
                 return Items.IRON_PICKAXE.getDefaultStack();
             case "Glass Bottle":
                 return Items.GLASS_BOTTLE.getDefaultStack();
+            case "Wheat":
+                return Items.WHEAT.getDefaultStack();
             default:
                 return Items.AIR.getDefaultStack();
         }
