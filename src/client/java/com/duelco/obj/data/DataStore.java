@@ -1,6 +1,8 @@
-package com.duelco.obj;
+package com.duelco.obj.data;
 
 import com.duelco.managers.BingoManager;
+import com.duelco.obj.general.UiPosition;
+import com.duelco.obj.bingo.BingoCard;
 
 import java.util.ArrayList;
 import java.util.List;

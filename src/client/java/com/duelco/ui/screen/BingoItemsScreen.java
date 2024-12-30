@@ -1,8 +1,8 @@
 package com.duelco.ui.screen;
 
 import com.duelco._enum.Screen;
-import com.duelco.obj.BingoItem;
-import com.duelco.obj.BingoPossibleItemsList;
+import com.duelco.obj.bingo.BingoItem;
+import com.duelco.obj.bingo.BingoPossibleItemsList;
 import io.wispforest.owo.ui.base.BaseOwoScreen;
 import io.wispforest.owo.ui.component.Components;
 import io.wispforest.owo.ui.component.TextBoxComponent;
@@ -10,11 +10,8 @@ import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.container.FlowLayout;
 import io.wispforest.owo.ui.container.ScrollContainer;
 import io.wispforest.owo.ui.core.*;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
 
 public class BingoItemsScreen extends BaseOwoScreen<FlowLayout> {
     private static FlowLayout bingoPossibleItemsContainer = (FlowLayout) Containers.verticalFlow(Sizing.fixed(500), Sizing.content()).allowOverflow(true);

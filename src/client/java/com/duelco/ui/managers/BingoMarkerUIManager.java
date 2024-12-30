@@ -1,8 +1,7 @@
 package com.duelco.ui.managers;
 
 import com.duelco.managers.DataManager;
-import com.duelco.obj.DataStore;
-import com.duelco.obj.UiPosition;
+import com.duelco.obj.general.UiPosition;
 import io.wispforest.owo.ui.component.Components;
 import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.container.FlowLayout;

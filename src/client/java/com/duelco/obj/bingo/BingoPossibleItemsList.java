@@ -1,4 +1,4 @@
-package com.duelco.obj;
+package com.duelco.obj.bingo;
 
 import io.wispforest.owo.ui.core.Component;
 

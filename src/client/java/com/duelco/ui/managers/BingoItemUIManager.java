@@ -1,7 +1,7 @@
 package com.duelco.ui.managers;
 
 import com.duelco.config.ModConfig;
-import com.duelco.obj.BingoItem;
+import com.duelco.obj.bingo.BingoItem;
 import io.wispforest.owo.ui.component.Components;
 import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.container.StackLayout;

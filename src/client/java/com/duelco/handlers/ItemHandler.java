@@ -1,6 +1,5 @@
 package com.duelco.handlers;
 
-import com.duelco.obj.BingoItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 
