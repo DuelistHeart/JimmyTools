@@ -5,6 +5,7 @@ import com.duelco.obj.BingoItem;
 import com.duelco.obj.BingoPossibleItemsList;
 import io.wispforest.owo.ui.base.BaseOwoScreen;
 import io.wispforest.owo.ui.component.Components;
+import io.wispforest.owo.ui.component.TextBoxComponent;
 import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.container.FlowLayout;
 import io.wispforest.owo.ui.container.ScrollContainer;
@@ -16,6 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class BingoItemsScreen extends BaseOwoScreen<FlowLayout> {
+    private static FlowLayout bingoPossibleItemsContainer = (FlowLayout) Containers.verticalFlow(Sizing.fixed(500), Sizing.content()).allowOverflow(true);
 
     @Override
     protected @NotNull OwoUIAdapter<FlowLayout> createAdapter() {
@@ -33,11 +35,35 @@ public class BingoItemsScreen extends BaseOwoScreen<FlowLayout> {
                 .surface(Surface.VANILLA_TRANSLUCENT)
                 .alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
 
-        List<BingoItem> bingoItems = BingoPossibleItemsList.getListOfPossibleItems();
+        updateItemList();
 
-        FlowLayout bingoPossibleItemsContainer = (FlowLayout) Containers.verticalFlow(Sizing.fixed(500), Sizing.content()).allowOverflow(true);
+        TextBoxComponent searchFieldComponent = Components.textBox(Sizing.fixed(250)).text(BingoPossibleItemsList.getFilter());
 
-        for (BingoItem item : bingoItems) {
+        searchFieldComponent.onChanged().subscribe((text) -> {
+            BingoPossibleItemsList.setFilter(text);
+            updateItemList();
+        });
+
+        rootComponent.child(
+                Components.label(Text.translatable("screen.jimmytools.bingoitems.title"))
+        ).child(
+                searchFieldComponent
+        ).child(
+                Containers.verticalScroll(Sizing.fixed(500), Sizing.fixed(200), bingoPossibleItemsContainer)
+                        .scrollbar(ScrollContainer.Scrollbar.vanilla())
+                        .scrollbarThiccness(5)
+                        .scrollStep(25)
+        ).child(
+                Components.button(Text.of("Cards"), buttonComponent -> {
+                    ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, client);
+                })
+        );
+    }
+
+    private void updateItemList() {
+        bingoPossibleItemsContainer.clearChildren();
+
+        for (BingoItem item : BingoPossibleItemsList.getListOfPossibleItems()) {
             FlowLayout bingoPossibleItemElement = (FlowLayout) Containers.horizontalFlow(Sizing.fixed(500), Sizing.fixed(25))
                     .verticalAlignment(VerticalAlignment.CENTER);
             bingoPossibleItemElement.child(
@@ -49,18 +75,5 @@ public class BingoItemsScreen extends BaseOwoScreen<FlowLayout> {
             );
             bingoPossibleItemsContainer.child(bingoPossibleItemElement);
         }
-
-        rootComponent.child(
-                Components.label(Text.translatable("screen.jimmytools.bingoitems.title"))
-        ).child(
-                Containers.verticalScroll(Sizing.fixed(500), Sizing.fixed(200), bingoPossibleItemsContainer)
-                        .scrollbar(ScrollContainer.Scrollbar.vanilla())
-                        .scrollbarThiccness(5)
-                        .scrollStep(25)
-        ).child(
-                Components.button(Text.of("Cards"), buttonComponent -> {
-                    ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, client);
-                })
-        );
     }
 }
