@@ -1,4 +1,4 @@
-package com.duelco.obj;
+package com.duelco.obj.general;
 
 public class Player {
     private String playerName;
