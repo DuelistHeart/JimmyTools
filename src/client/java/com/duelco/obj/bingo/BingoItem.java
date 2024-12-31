@@ -1,4 +1,4 @@
-package com.duelco.obj;
+package com.duelco.obj.bingo;
 
 import com.duelco.handlers.ItemHandler;
 import net.minecraft.component.*;
@@ -31,10 +31,7 @@ public class BingoItem {
     }
 
     public ItemStack getItem() {
-        // Setting customModelDataNumList to a list, because ofcourse it needs to be a list ꓷ:
-        List<Float> customModelDataNumList = new ArrayList<>();
-        customModelDataNumList.add((float) customModelDataNum);
-        CustomModelDataComponent ItemComponents= new CustomModelDataComponent(customModelDataNumList,new ArrayList<>(),new ArrayList<>(),new ArrayList<>());
+        CustomModelDataComponent ItemComponents= new CustomModelDataComponent(customModelDataNum);
         ItemStack item = ItemHandler.getItemFromString(baseItem);
         item.set(DataComponentTypes.CUSTOM_MODEL_DATA, ItemComponents);
         return item;

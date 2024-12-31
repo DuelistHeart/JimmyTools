@@ -1,6 +1,6 @@
 package com.duelco.managers;
 
-import com.duelco.obj.Player;
+import com.duelco.obj.general.Player;
 
 import java.util.List;
 

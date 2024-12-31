@@ -1,7 +1,6 @@
 package com.duelco.managers;
 
-import com.duelco.obj.BingoCard;
-import com.duelco.obj.DataStore;
+import com.duelco.obj.data.DataStore;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;

@@ -1,6 +1,5 @@
 package com.duelco.handlers;
 
-import com.duelco.obj.BingoItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 
@@ -37,6 +36,8 @@ public class ItemHandler {
                 return Items.IRON_PICKAXE.getDefaultStack();
             case "Glass Bottle":
                 return Items.GLASS_BOTTLE.getDefaultStack();
+            case "Wheat":
+                return Items.WHEAT.getDefaultStack();
             default:
                 return Items.AIR.getDefaultStack();
         }
