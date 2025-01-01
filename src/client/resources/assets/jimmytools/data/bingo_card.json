@@ -23,6 +23,7 @@
   {"baseItem":"Rabbit Foot", "customModelDataNum": 35, "name": "Skill Book"},
   {"baseItem":"Fishing Rod", "customModelDataNum": 0, "name": "Fishing Rod"},
   {"baseItem":"Warped Fungus on a Stick", "customModelDataNum": 1, "name": "Wrench"},
+  {"baseItem":"Warped Fungus on a Stick", "customModelDataNum": 9, "name": "Crowbar"},
   {"baseItem":"Iron Pickaxe", "customModelDataNum": 1, "name": "Dwarven Pickaxe"},
   {"baseItem":"Apple", "customModelDataNum": 80, "name": "Wine"},
   {"baseItem":"Rabbit Foot", "customModelDataNum": 58, "name": "Ashes"},
