@@ -74,7 +74,7 @@ public class ModConfig {
                                         .description(OptionDescription.of(Text.literal("The max amount of cards that can be generated.")))
                                         .binding(3, () -> bingoMaxCards, newVal -> bingoMaxCards = newVal)
                                         .controller(integerOption -> IntegerSliderControllerBuilder.create(integerOption)
-                                                .range(1, 3)
+                                                .range(1, 50)
                                                 .step(1)
                                                 .formatValue(val -> Text.of(val + " Card(s)")))
                                         .build())
