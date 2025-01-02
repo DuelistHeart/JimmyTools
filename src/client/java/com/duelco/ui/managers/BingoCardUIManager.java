@@ -73,6 +73,15 @@ public class BingoCardUIManager {
             return true;
         });
 
+        if (!bingoCard.getBingoMarkerPositions().isEmpty()) {
+            for (UiPosition markerPos : bingoCard.getBingoMarkerPositions()) {
+                markerElement.child(Components.texture(Identifier.of("jimmytools", "ui/marker.png"), 1, 1, 256, 256)
+                        .sizing(Sizing.fixed(20))
+                        .zIndex(30)
+                        .positioning(Positioning.absolute(markerPos.getX(), markerPos.getY())));
+            }
+        }
+
         return bingoCardElement;
     }
 }
