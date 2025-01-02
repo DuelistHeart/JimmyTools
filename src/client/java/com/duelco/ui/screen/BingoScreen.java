@@ -43,8 +43,7 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
         FlowLayout bingoCardsLayout = (FlowLayout) Containers.horizontalFlow(Sizing.fixed(500), Sizing.fixed(220))
                 .alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
 
-        bingoCardsAndMarkerLayout.child(bingoCardsLayout)
-                .child(bingoMarkerManager.bingoMarkersLayout);
+        bingoCardsAndMarkerLayout.child(bingoCardsLayout);
 
         bingoCardsLayout.mouseDown().subscribe((x, y, btn) -> {
                     bingoMarkerManager.addMarker((int) x, (int) y);
@@ -71,8 +70,11 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
                 }).margins(Insets.of(2))
         ).child(
                 Components.button(Text.translatable("buttons.jimmytools.bingo.generate_cards"), buttonComponent -> {
-                    BingoManager.generateCard();
-                    ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, client);
+                    BingoCard newBingoCard = BingoManager.generateCard();
+
+                    if (newBingoCard != null) {
+                        bingoCardsLayout.child(BingoCardUIManager.buildBingoCardComponent(newBingoCard));
+                    }
                 }).margins(Insets.of(2))
         ).child(
                 Components.button(Text.translatable("buttons.jimmytools.bingo.reset"), buttonComponent -> {
