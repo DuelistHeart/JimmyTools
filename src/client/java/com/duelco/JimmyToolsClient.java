@@ -8,6 +8,7 @@ import com.duelco.listeners.BingoListener;
 import com.duelco.managers.DataManager;
 import com.duelco.ui.screen.ScreenHandler;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
@@ -67,6 +68,10 @@ public class JimmyToolsClient implements ClientModInitializer {
 			while (modMenuKeybind.wasPressed()) {
 				client.setScreen(ModConfig.build().generateScreen(client.currentScreen));
 			}
+		});
+
+		ClientLifecycleEvents.CLIENT_STOPPING.register(client -> {
+			ModConfig.HANDLER.save();
 		});
 	}
 
