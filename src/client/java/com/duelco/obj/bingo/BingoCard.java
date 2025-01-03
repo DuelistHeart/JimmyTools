@@ -2,6 +2,7 @@ package com.duelco.obj.bingo;
 
 import com.duelco.obj.general.UiPosition;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BingoCard {
@@ -14,6 +15,7 @@ public class BingoCard {
     }
 
     public BingoCard() {
+        this.bingoMarkerPositions = new ArrayList<>();
     }
 
     public void initItems() {
