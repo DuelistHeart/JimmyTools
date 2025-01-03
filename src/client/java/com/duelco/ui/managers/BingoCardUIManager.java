@@ -63,22 +63,32 @@ public class BingoCardUIManager {
         markerElement.mouseDown().subscribe((x, y, btn) -> {
             UiPosition markerPos = new UiPosition((int) (x-((double) MARKER_SIZE /2)), (int) (y-((double) MARKER_SIZE /2)));
             bingoCard.addMarker(markerPos);
-            markerElement.child(Components.texture(Identifier.of("jimmytools", "ui/marker.png"), 1, 1, 256, 256)
-                    .sizing(Sizing.fixed(20))
-                    .zIndex(30)
-                    .positioning(Positioning.absolute(markerPos.getX(), markerPos.getY())));
+            markerElement.child(buildMarkerComponent(bingoCard, markerPos));
             return true;
         });
 
         if (!bingoCard.getBingoMarkerPositions().isEmpty()) {
             for (UiPosition markerPos : bingoCard.getBingoMarkerPositions()) {
-                markerElement.child(Components.texture(Identifier.of("jimmytools", "ui/marker.png"), 1, 1, 256, 256)
-                        .sizing(Sizing.fixed(20))
-                        .zIndex(30)
-                        .positioning(Positioning.absolute(markerPos.getX(), markerPos.getY())));
+                markerElement.child(buildMarkerComponent(bingoCard, markerPos));
             }
         }
 
         return bingoCardElement;
+    }
+
+    private static Component buildMarkerComponent(BingoCard bingoCard, UiPosition markerPos) {
+        Component markerComponent = Components.texture(Identifier.of("jimmytools", "ui/marker.png"), 1, 1, 256, 256)
+                .sizing(Sizing.fixed(20))
+                .zIndex(30)
+                .positioning(Positioning.absolute(markerPos.getX(), markerPos.getY()));
+
+        markerComponent.mouseDown().subscribe((x, y, btn) -> {
+            System.out.println("TEST!!!!");
+            markerComponent.remove();
+            bingoCard.removeMarker(markerPos);
+            return true;
+        });
+
+        return markerComponent;
     }
 }

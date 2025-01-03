@@ -41,4 +41,8 @@ public class BingoCard {
     public void addMarker(UiPosition markerPos) {
         this.bingoMarkerPositions.add(markerPos);
     }
+
+    public void removeMarker(UiPosition markerPos) {
+        this.bingoMarkerPositions.remove(markerPos);
+    }
 }
