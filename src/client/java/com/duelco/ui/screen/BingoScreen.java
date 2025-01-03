@@ -11,6 +11,7 @@ import io.wispforest.owo.ui.base.BaseOwoScreen;
 import io.wispforest.owo.ui.component.Components;
 import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.container.FlowLayout;
+import io.wispforest.owo.ui.container.ScrollContainer;
 import io.wispforest.owo.ui.container.StackLayout;
 import io.wispforest.owo.ui.core.*;
 import net.minecraft.client.MinecraftClient;
@@ -34,13 +35,9 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
                 .surface(Surface.VANILLA_TRANSLUCENT)
                 .alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
 
-        StackLayout bingoCardsAndMarkerLayout = (StackLayout) Containers.stack(Sizing.fixed(500), Sizing.fixed(220))
-                .alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
-
-        FlowLayout bingoCardsLayout = (FlowLayout) Containers.horizontalFlow(Sizing.fixed(500), Sizing.fixed(220))
-                .alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
-
-        bingoCardsAndMarkerLayout.child(bingoCardsLayout);
+        FlowLayout bingoCardsLayout = (FlowLayout) Containers.horizontalFlow(Sizing.content(), Sizing.fixed(220))
+                .alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER)
+                .allowOverflow(true);
 
         for (BingoCard bingoCard : BingoManager.getCards()) {
             bingoCardsLayout.child(BingoCardUIManager.buildBingoCardComponent(bingoCard));
@@ -85,7 +82,10 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
         rootComponent.child(
                 Components.label(Text.translatable("screen.jimmytools.bingo.title"))
         ).child(
-                bingoCardsAndMarkerLayout
+            Containers.horizontalScroll(Sizing.fixed(500), Sizing.fixed(200), bingoCardsLayout)
+                .scrollbar(ScrollContainer.Scrollbar.vanillaFlat())
+                .scrollbarThiccness(5)
+                .scrollStep(25)
         ).child(
                 buttonGroup
         );
