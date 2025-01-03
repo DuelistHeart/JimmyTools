@@ -2,6 +2,7 @@ package com.duelco.ui.managers;
 
 import com.duelco.config.ModConfig;
 import com.duelco.obj.bingo.BingoCard;
+import com.duelco.obj.general.UiPosition;
 import io.wispforest.owo.ui.component.Components;
 import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.container.GridLayout;
@@ -10,6 +11,8 @@ import io.wispforest.owo.ui.core.*;
 import net.minecraft.util.Identifier;
 
 public class BingoCardUIManager {
+    private static final int MARKER_SIZE = 20;
+
     public static StackLayout buildBingoCardComponent(BingoCard bingoCard) {
         StackLayout bingoCardElement = (StackLayout) Containers.stack(Sizing.fixed(132), Sizing.fixed(165))
                 .alignment(HorizontalAlignment.CENTER, VerticalAlignment.BOTTOM);
@@ -20,14 +23,6 @@ public class BingoCardUIManager {
                 .padding(Insets.of(4));
         GridLayout bingoGridElement = (GridLayout) Containers.grid(Sizing.fixed(120), Sizing.fixed(120), 5, 5)
                 .alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
-
-        markerElement.mouseDown().subscribe((x, y, btn) -> {
-            markerElement.child(Components.texture(Identifier.of("jimmytools", "ui/marker.png"), 1, 1, 256, 256)
-                    .sizing(Sizing.fixed(20))
-                    .zIndex(30)
-                    .positioning(Positioning.relative(80,20)));
-            return true;
-        });
 
         int fullIndex = 0;
 
@@ -64,6 +59,16 @@ public class BingoCardUIManager {
         ).child(
                 markerElement
         );
+
+        markerElement.mouseDown().subscribe((x, y, btn) -> {
+            UiPosition markerPos = new UiPosition((int) (x-((double) MARKER_SIZE /2)), (int) (y-((double) MARKER_SIZE /2)));
+            bingoCard.addMarker(markerPos);
+            markerElement.child(Components.texture(Identifier.of("jimmytools", "ui/marker.png"), 1, 1, 256, 256)
+                    .sizing(Sizing.fixed(20))
+                    .zIndex(30)
+                    .positioning(Positioning.absolute(markerPos.getX(), markerPos.getY())));
+            return true;
+        });
 
         return bingoCardElement;
     }
