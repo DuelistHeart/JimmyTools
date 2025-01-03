@@ -7,7 +7,6 @@ import com.duelco.managers.BingoManager;
 import com.duelco.managers.ToastManager;
 import com.duelco.obj.bingo.BingoCard;
 import com.duelco.ui.managers.BingoCardUIManager;
-import com.duelco.ui.managers.BingoMarkerUIManager;
 import io.wispforest.owo.ui.base.BaseOwoScreen;
 import io.wispforest.owo.ui.component.Components;
 import io.wispforest.owo.ui.container.Containers;
@@ -19,8 +18,6 @@ import net.minecraft.text.Text;
 import org.jetbrains.annotations.NotNull;
 
 public class BingoScreen extends BaseOwoScreen<FlowLayout> {
-    private static final BingoMarkerUIManager bingoMarkerManager = new BingoMarkerUIManager();
-
     @Override
     protected @NotNull OwoUIAdapter<FlowLayout> createAdapter() {
         return OwoUIAdapter.create(this, Containers::verticalFlow);
@@ -45,12 +42,6 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
 
         bingoCardsAndMarkerLayout.child(bingoCardsLayout);
 
-        bingoCardsLayout.mouseDown().subscribe((x, y, btn) -> {
-                    bingoMarkerManager.addMarker((int) x, (int) y);
-
-                    return true;
-                });
-
         for (BingoCard bingoCard : BingoManager.getCards()) {
             bingoCardsLayout.child(BingoCardUIManager.buildBingoCardComponent(bingoCard));
         }
@@ -65,7 +56,6 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
                 }).margins(Insets.of(2))
         ).child(
                 Components.button(Text.translatable("buttons.jimmytools.bingo.clear_marks"),buttonComponent -> {
-                    bingoMarkerManager.clearMarkers();
                     ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, client);
                 }).margins(Insets.of(2))
         ).child(
@@ -80,7 +70,6 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
                 Components.button(Text.translatable("buttons.jimmytools.bingo.reset"), buttonComponent -> {
                     ScreenHandler.displayConfirmationScreen(MinecraftClient.getInstance(),"Are you sure you want to reset (delete) your bingo cards?",
                     () -> {
-                        bingoMarkerManager.clearMarkers();
                         BingoManager.resetCards();
                         ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, client);
                     }, () -> {
