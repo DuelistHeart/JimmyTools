@@ -1,5 +1,6 @@
 package com.duelco.obj.bingo;
 
+import com.duelco.managers.DataManager;
 import com.duelco.obj.general.UiPosition;
 
 import java.util.ArrayList;
@@ -40,9 +41,11 @@ public class BingoCard {
 
     public void addMarker(UiPosition markerPos) {
         this.bingoMarkerPositions.add(markerPos);
+        DataManager.saveData();
     }
 
     public void removeMarker(UiPosition markerPos) {
         this.bingoMarkerPositions.remove(markerPos);
+        DataManager.saveData();
     }
 }
