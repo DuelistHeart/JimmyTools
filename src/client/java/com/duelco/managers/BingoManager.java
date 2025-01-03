@@ -13,16 +13,18 @@ import java.util.List;
 public class BingoManager {
     private static List<BingoCard> bingoCards = new ArrayList<>();
 
-    public static void generateCard() {
+    public static BingoCard generateCard() {
         if (bingoCards.size() < ModConfig.bingoMaxCards) {
             BingoCard generatedCard = new BingoCard();
 
             generatedCard.initItems();
             bingoCards.add(generatedCard);
             DataManager.saveData();
-            ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, MinecraftClient.getInstance());
+
+            return generatedCard;
         } else {
             ToastManager.displayToast(Text.of("Max Cards Reached"), Text.of("Max cards currently set to " + ModConfig.bingoMaxCards));
+            return null;
         }
     }
 
