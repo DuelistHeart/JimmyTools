@@ -82,7 +82,7 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
         rootComponent.child(
                 Components.label(Text.translatable("screen.jimmytools.bingo.title"))
         ).child(
-            Containers.horizontalScroll(Sizing.fixed(500), Sizing.fixed(200), bingoCardsLayout)
+            Containers.horizontalScroll(Sizing.fixed(340), Sizing.fixed(200), bingoCardsLayout)
                 .scrollbar(ScrollContainer.Scrollbar.vanillaFlat())
                 .scrollbarThiccness(5)
                 .scrollStep(25)

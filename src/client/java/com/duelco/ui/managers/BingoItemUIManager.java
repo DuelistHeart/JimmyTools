@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 public class BingoItemUIManager {
 
     public static StackLayout buildItemSlot(BingoItem bingoItem) {
-        StackLayout sampleSlot = (StackLayout) Containers.stack(Sizing.fixed(24), Sizing.fixed(24))
+        StackLayout sampleSlot = (StackLayout) Containers.stack(Sizing.fixed(20), Sizing.fixed(20))
                 .alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER)
                 .padding(Insets.of(2));
 
@@ -24,12 +24,13 @@ public class BingoItemUIManager {
         if (bingoItem.isFreeSpace()) {
             sampleSlot.child(
                     Components.texture(Identifier.of("jimmytools", "ui/free_space.png"), 1, 1, 256, 256)
-                            .sizing(Sizing.fixed(20))
+                            .sizing(Sizing.fixed(12))
                             .zIndex(500)
             );
         } else {
             sampleSlot.child(
                     Components.item(bingoItem.getItem())
+                            .sizing(Sizing.fixed(12))
                             .zIndex(25)
             );
         }
