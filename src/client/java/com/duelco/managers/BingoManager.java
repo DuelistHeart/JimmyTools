@@ -38,4 +38,10 @@ public class BingoManager {
     public static List<BingoCard> getCards() {
         return bingoCards;
     }
+
+    public static void clearMarkers() {
+        for (BingoCard card : bingoCards) {
+            card.clearMarkers();
+        }
+    }
 }

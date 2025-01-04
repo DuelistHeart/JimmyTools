@@ -49,7 +49,7 @@ public class BingoItemsScreen extends BaseOwoScreen<FlowLayout> {
         ).child(
                 searchFieldComponent
         ).child(
-                Containers.verticalScroll(Sizing.fixed(500), Sizing.fixed(200), bingoPossibleItemsContainer)
+                Containers.verticalScroll(Sizing.fixed(340), Sizing.fixed(200), bingoPossibleItemsContainer)
                         .scrollbar(ScrollContainer.Scrollbar.vanillaFlat())
                         .scrollbarThiccness(5)
                         .scrollStep(25)

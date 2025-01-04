@@ -22,11 +22,22 @@ public class ModConfig {
                     .build();
 
     @SerialEntry
-    public static int bingoMaxCards = 3; // The isColor property adds a color chooser for a hexadecimal color
-    @SerialEntry()
-    public static Color bingoBackgroundColor = Color.decode("#e2d5c4"); // The isColor property adds a color chooser for a hexadecimal color
+    public static int bingoMaxCards = 3;
     @SerialEntry
-    public static Color bingoGridColor = Color.decode("#d59989"); // The isColor property adds a color chooser for a hexadecimal color
+    public static boolean isDisplayBingoNumsEnabled = true;
+    @SerialEntry
+    public static Color bingoBackgroundColor = Color.decode("#e2d5c4");
+    @SerialEntry
+    public static Color bingoGridColor = Color.decode("#d59989");
+    @SerialEntry
+    public static boolean isBingoMarkerPlaceSoundEnabled = true;
+    @SerialEntry
+    public static boolean isBingoMarkerRemoveSoundEnabled = true;
+    @SerialEntry
+    public static boolean isBingoCardClearSoundEnabled = true;
+    @SerialEntry
+    public static boolean isBingoCardGenerateSoundEnabled = true;
+
 
     @SerialEntry
     public static boolean areTransformationsEnabled = false;
@@ -77,6 +88,40 @@ public class ModConfig {
                                                 .range(1, 50)
                                                 .step(1)
                                                 .formatValue(val -> Text.of(val + " Card(s)")))
+                                        .build())
+                                .option(Option.<Boolean>createBuilder()
+                                        .name(Text.literal("Show Bingo Card Numbers"))
+                                        .description(OptionDescription.of(Text.literal("Displays the Bingo Card # on the bingo cards.")))
+                                        .binding(true, () -> isDisplayBingoNumsEnabled, newVal -> isDisplayBingoNumsEnabled = newVal)
+                                        .controller(BooleanControllerBuilder::create)
+                                        .build())
+                                .build())
+                        .group(OptionGroup.createBuilder()
+                                .name(Text.literal("Sound Options"))
+                                .description(OptionDescription.of(Text.literal("Sound options for Bingo cards")))
+                                .option(Option.<Boolean>createBuilder()
+                                        .name(Text.literal("Enable Marker Place Sound"))
+                                        .description(OptionDescription.of(Text.literal("Determines if a sound plays when placing Bingo markers.")))
+                                        .binding(true, () -> isBingoMarkerPlaceSoundEnabled, newVal -> isBingoMarkerPlaceSoundEnabled = newVal)
+                                        .controller(BooleanControllerBuilder::create)
+                                        .build())
+                                .option(Option.<Boolean>createBuilder()
+                                        .name(Text.literal("Enable Marker Remove Sound"))
+                                        .description(OptionDescription.of(Text.literal("Determines if a sound plays when removing Bingo markers.")))
+                                        .binding(true, () -> isBingoMarkerRemoveSoundEnabled, newVal -> isBingoMarkerRemoveSoundEnabled = newVal)
+                                        .controller(BooleanControllerBuilder::create)
+                                        .build())
+                                .option(Option.<Boolean>createBuilder()
+                                        .name(Text.literal("Enable Card Clear Sound"))
+                                        .description(OptionDescription.of(Text.literal("Determines if a sound plays when clearing Bingo cards.")))
+                                        .binding(true, () -> isBingoCardClearSoundEnabled, newVal -> isBingoCardClearSoundEnabled = newVal)
+                                        .controller(BooleanControllerBuilder::create)
+                                        .build())
+                                .option(Option.<Boolean>createBuilder()
+                                        .name(Text.literal("Enable Card Generate Sound"))
+                                        .description(OptionDescription.of(Text.literal("Determines if a sound plays when generating Bingo cards.")))
+                                        .binding(true, () -> isBingoCardGenerateSoundEnabled, newVal -> isBingoCardGenerateSoundEnabled = newVal)
+                                        .controller(BooleanControllerBuilder::create)
                                         .build())
                                 .build())
                         .build())
