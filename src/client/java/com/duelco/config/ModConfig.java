@@ -27,6 +27,11 @@ public class ModConfig {
     public static Color bingoBackgroundColor = Color.decode("#e2d5c4"); // The isColor property adds a color chooser for a hexadecimal color
     @SerialEntry
     public static Color bingoGridColor = Color.decode("#d59989"); // The isColor property adds a color chooser for a hexadecimal color
+    @SerialEntry
+    public static boolean isBingoMarkerPlaceSoundEnabled = true;
+    @SerialEntry
+    public static boolean isBingoMarkerRemoveSoundEnabled = true;
+
 
     @SerialEntry
     public static boolean areTransformationsEnabled = false;
@@ -77,6 +82,22 @@ public class ModConfig {
                                                 .range(1, 50)
                                                 .step(1)
                                                 .formatValue(val -> Text.of(val + " Card(s)")))
+                                        .build())
+                                .build())
+                        .group(OptionGroup.createBuilder()
+                                .name(Text.literal("Sound Options"))
+                                .description(OptionDescription.of(Text.literal("Sound options for Bingo cards")))
+                                .option(Option.<Boolean>createBuilder()
+                                        .name(Text.literal("Enable Marker Place Sound"))
+                                        .description(OptionDescription.of(Text.literal("Determines if a sound plays when placing Bingo markers.")))
+                                        .binding(true, () -> isBingoMarkerPlaceSoundEnabled, newVal -> isBingoMarkerPlaceSoundEnabled = newVal)
+                                        .controller(BooleanControllerBuilder::create)
+                                        .build())
+                                .option(Option.<Boolean>createBuilder()
+                                        .name(Text.literal("Enable Marker Remove Sound"))
+                                        .description(OptionDescription.of(Text.literal("Determines if a sound plays when removing Bingo markers.")))
+                                        .binding(true, () -> isBingoMarkerRemoveSoundEnabled, newVal -> isBingoMarkerRemoveSoundEnabled = newVal)
+                                        .controller(BooleanControllerBuilder::create)
                                         .build())
                                 .build())
                         .build())

@@ -35,8 +35,7 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
                 .alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
 
         FlowLayout bingoCardsLayout = (FlowLayout) Containers.horizontalFlow(Sizing.content(), Sizing.fixed(220))
-                .alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER)
-                .allowOverflow(true);
+                .alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
 
         for (BingoCard bingoCard : BingoManager.getCards()) {
             bingoCardsLayout.child(BingoCardUIManager.buildBingoCardComponent(bingoCard));
@@ -85,7 +84,7 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
             Containers.horizontalScroll(Sizing.fixed(340), Sizing.fixed(200), bingoCardsLayout)
                 .scrollbar(ScrollContainer.Scrollbar.vanillaFlat())
                 .scrollbarThiccness(5)
-                .scrollStep(25)
+                .scrollStep(114)
         ).child(
                 buttonGroup
         );

@@ -1,6 +1,8 @@
 package com.duelco.ui.managers;
 
+import com.duelco._enum.SoundEvent;
 import com.duelco.config.ModConfig;
+import com.duelco.managers.SoundManager;
 import com.duelco.obj.bingo.BingoCard;
 import com.duelco.obj.general.UiPosition;
 import io.wispforest.owo.ui.component.Components;
@@ -8,6 +10,9 @@ import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.container.GridLayout;
 import io.wispforest.owo.ui.container.StackLayout;
 import io.wispforest.owo.ui.core.*;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.sound.PositionedSoundInstance;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
 public class BingoCardUIManager {
@@ -65,6 +70,7 @@ public class BingoCardUIManager {
             UiPosition markerPos = new UiPosition((int) (x-((double) MARKER_SIZE /2)), (int) (y-((double) MARKER_SIZE /2)));
             bingoCard.addMarker(markerPos);
             markerElement.child(buildMarkerComponent(bingoCard, markerPos));
+            SoundManager.playSound(SoundEvent.PLACE_MARKER);
             return true;
         });
 
@@ -84,9 +90,9 @@ public class BingoCardUIManager {
                 .positioning(Positioning.absolute(markerPos.getX(), markerPos.getY()));
 
         markerComponent.mouseDown().subscribe((x, y, btn) -> {
-            System.out.println("TEST!!!!");
             markerComponent.remove();
             bingoCard.removeMarker(markerPos);
+            SoundManager.playSound(SoundEvent.REMOVE_MARKER);
             return true;
         });
 
