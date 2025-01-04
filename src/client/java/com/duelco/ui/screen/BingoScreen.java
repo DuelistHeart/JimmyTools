@@ -9,7 +9,6 @@ import com.duelco.managers.SoundManager;
 import com.duelco.managers.ToastManager;
 import com.duelco.obj.bingo.BingoCard;
 import com.duelco.ui.managers.BingoCardUIManager;
-import com.duelco.ui.managers.BingoMarkerUIManager;
 import io.wispforest.owo.ui.base.BaseOwoScreen;
 import io.wispforest.owo.ui.component.Components;
 import io.wispforest.owo.ui.container.Containers;
