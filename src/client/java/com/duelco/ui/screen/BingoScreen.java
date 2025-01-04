@@ -39,8 +39,10 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
         FlowLayout bingoCardsLayout = (FlowLayout) Containers.horizontalFlow(Sizing.content(), Sizing.fixed(220))
                 .alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
 
-        for (BingoCard bingoCard : BingoManager.getCards()) {
-            bingoCardsLayout.child(BingoCardUIManager.buildBingoCardComponent(bingoCard));
+        // For each bingo card in BingoManager, build a BingoCardComponent and add it to the bingoCardsLayout.
+        // Use an index to keep track of the card number.
+        for (int i = 0; i < BingoManager.getCards().size(); i++) {
+            bingoCardsLayout.child(BingoCardUIManager.buildBingoCardComponent(i+1, BingoManager.getCards().get(i)));
         }
 
         FlowLayout buttonGroup = (FlowLayout) Containers.horizontalFlow(Sizing.fill(), Sizing.fixed(22))
@@ -63,7 +65,7 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
 
                     if (newBingoCard != null) {
                         SoundManager.playSound(SoundEvent.GENERATE_BINGO_CARD);
-                        bingoCardsLayout.child(BingoCardUIManager.buildBingoCardComponent(newBingoCard));
+                        bingoCardsLayout.child(BingoCardUIManager.buildBingoCardComponent(BingoManager.getCards().size(), newBingoCard));
                     }
                 }).margins(Insets.of(2))
         ).child(

@@ -13,12 +13,16 @@ import io.wispforest.owo.ui.core.*;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Style;
+import net.minecraft.text.Text;
+import net.minecraft.text.TextColor;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 
 public class BingoCardUIManager {
     private static final int MARKER_SIZE = 14;
 
-    public static StackLayout buildBingoCardComponent(BingoCard bingoCard) {
+    public static StackLayout buildBingoCardComponent(Integer cardNumber, BingoCard bingoCard) {
         StackLayout bingoCardElement = (StackLayout) Containers.stack(Sizing.fixed(110), Sizing.fixed(140))
                 .alignment(HorizontalAlignment.CENTER, VerticalAlignment.BOTTOM)
                 .margins(Insets.of(2));
@@ -50,6 +54,16 @@ public class BingoCardUIManager {
         ).child(
                 bingoGridElement
         );
+
+        if (cardNumber != null && ModConfig.isDisplayBingoNumsEnabled) {
+            Style style = Style.EMPTY.withColor(ModConfig.bingoGridColor.getRGB());
+
+            bingoCardElement.child(
+                    Components.label(Text.literal(cardNumber.toString()).setStyle(style))
+                            .positioning(Positioning.absolute(2, 2))
+                            .zIndex(100)
+            );
+        }
 
         bingoCardElement.child(
                 Components.box(Sizing.fixed(130), Sizing.fixed(160))

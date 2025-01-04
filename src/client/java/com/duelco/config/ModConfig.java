@@ -22,11 +22,13 @@ public class ModConfig {
                     .build();
 
     @SerialEntry
-    public static int bingoMaxCards = 3; // The isColor property adds a color chooser for a hexadecimal color
-    @SerialEntry()
-    public static Color bingoBackgroundColor = Color.decode("#e2d5c4"); // The isColor property adds a color chooser for a hexadecimal color
+    public static int bingoMaxCards = 3;
     @SerialEntry
-    public static Color bingoGridColor = Color.decode("#d59989"); // The isColor property adds a color chooser for a hexadecimal color
+    public static boolean isDisplayBingoNumsEnabled = true;
+    @SerialEntry
+    public static Color bingoBackgroundColor = Color.decode("#e2d5c4");
+    @SerialEntry
+    public static Color bingoGridColor = Color.decode("#d59989");
     @SerialEntry
     public static boolean isBingoMarkerPlaceSoundEnabled = true;
     @SerialEntry
@@ -86,6 +88,12 @@ public class ModConfig {
                                                 .range(1, 50)
                                                 .step(1)
                                                 .formatValue(val -> Text.of(val + " Card(s)")))
+                                        .build())
+                                .option(Option.<Boolean>createBuilder()
+                                        .name(Text.literal("Show Bingo Card Numbers"))
+                                        .description(OptionDescription.of(Text.literal("Displays the Bingo Card # on the bingo cards.")))
+                                        .binding(true, () -> isDisplayBingoNumsEnabled, newVal -> isDisplayBingoNumsEnabled = newVal)
+                                        .controller(BooleanControllerBuilder::create)
                                         .build())
                                 .build())
                         .group(OptionGroup.createBuilder()
