@@ -66,7 +66,7 @@ public class JimmyToolsClient implements ClientModInitializer {
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (modMenuKeybind.wasPressed()) {
-				client.setScreen(ModConfig.build().generateScreen(client.currentScreen));
+				ScreenHandler.displayScreen(Screen.CONFIG_SCREEN, client);
 			}
 		});
 

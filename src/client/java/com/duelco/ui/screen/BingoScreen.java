@@ -80,6 +80,10 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
                 Components.button(Text.translatable("buttons.jimmytools.bingo.item_list"), buttonComponent -> {
                     ScreenHandler.displayScreen(Screen.BINGO_ITEMS_SCREEN, client);
                 }).margins(Insets.of(2))
+        ).child(
+                Components.button(Text.of("\uD83D\uDEE0"), buttonComponent -> {
+                    ScreenHandler.displayScreen(Screen.CONFIG_SCREEN, client);
+                }).margins(Insets.of(2))
         );
 
         rootComponent.child(
