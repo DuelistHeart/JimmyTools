@@ -48,4 +48,9 @@ public class BingoCard {
         this.bingoMarkerPositions.remove(markerPos);
         DataManager.saveData();
     }
+
+    public void clearMarkers() {
+        this.bingoMarkerPositions.clear();
+        DataManager.saveData();
+    }
 }

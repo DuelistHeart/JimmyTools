@@ -12,7 +12,6 @@ import io.wispforest.owo.ui.component.Components;
 import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.container.FlowLayout;
 import io.wispforest.owo.ui.container.ScrollContainer;
-import io.wispforest.owo.ui.container.StackLayout;
 import io.wispforest.owo.ui.core.*;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
@@ -53,6 +52,7 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
                 }).margins(Insets.of(2))
         ).child(
                 Components.button(Text.translatable("buttons.jimmytools.bingo.clear_marks"),buttonComponent -> {
+                    BingoManager.clearMarkers();
                     ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, client);
                 }).margins(Insets.of(2))
         ).child(
