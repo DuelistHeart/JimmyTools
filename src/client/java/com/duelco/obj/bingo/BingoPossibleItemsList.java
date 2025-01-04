@@ -5,7 +5,6 @@ import io.wispforest.owo.ui.core.Component;
 import java.util.*;
 
 public class BingoPossibleItemsList {
-    private static Component filteredBingoItemsComponent;
     private static final ArrayList<BingoItem> items = new ArrayList<>();
     private static final int MAX_CARD_SIZE = 25;
     private static String filter;
