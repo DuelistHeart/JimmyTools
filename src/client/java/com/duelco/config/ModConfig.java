@@ -31,6 +31,10 @@ public class ModConfig {
     public static boolean isBingoMarkerPlaceSoundEnabled = true;
     @SerialEntry
     public static boolean isBingoMarkerRemoveSoundEnabled = true;
+    @SerialEntry
+    public static boolean isBingoCardClearSoundEnabled = true;
+    @SerialEntry
+    public static boolean isBingoCardGenerateSoundEnabled = true;
 
 
     @SerialEntry
@@ -97,6 +101,18 @@ public class ModConfig {
                                         .name(Text.literal("Enable Marker Remove Sound"))
                                         .description(OptionDescription.of(Text.literal("Determines if a sound plays when removing Bingo markers.")))
                                         .binding(true, () -> isBingoMarkerRemoveSoundEnabled, newVal -> isBingoMarkerRemoveSoundEnabled = newVal)
+                                        .controller(BooleanControllerBuilder::create)
+                                        .build())
+                                .option(Option.<Boolean>createBuilder()
+                                        .name(Text.literal("Enable Card Clear Sound"))
+                                        .description(OptionDescription.of(Text.literal("Determines if a sound plays when clearing Bingo cards.")))
+                                        .binding(true, () -> isBingoCardClearSoundEnabled, newVal -> isBingoCardClearSoundEnabled = newVal)
+                                        .controller(BooleanControllerBuilder::create)
+                                        .build())
+                                .option(Option.<Boolean>createBuilder()
+                                        .name(Text.literal("Enable Card Generate Sound"))
+                                        .description(OptionDescription.of(Text.literal("Determines if a sound plays when generating Bingo cards.")))
+                                        .binding(true, () -> isBingoCardGenerateSoundEnabled, newVal -> isBingoCardGenerateSoundEnabled = newVal)
                                         .controller(BooleanControllerBuilder::create)
                                         .build())
                                 .build())

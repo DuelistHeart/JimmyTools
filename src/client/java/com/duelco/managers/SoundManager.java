@@ -16,6 +16,12 @@ public class SoundManager {
             case REMOVE_MARKER:
                 if (ModConfig.isBingoMarkerRemoveSoundEnabled) client.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.ITEM_BRUSH_BRUSHING_GENERIC, 1.5F));
                 break;
+            case CLEAR_BINGO_CARD:
+                if (ModConfig.isBingoCardClearSoundEnabled) client.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.ITEM_BOOK_PAGE_TURN, 1.5F));
+                break;
+            case GENERATE_BINGO_CARD:
+                if (ModConfig.isBingoCardGenerateSoundEnabled) client.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.ITEM_BOOK_PAGE_TURN, 1.5F));
+                break;
         }
     }
 }

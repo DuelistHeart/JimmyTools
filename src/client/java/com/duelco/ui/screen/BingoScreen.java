@@ -1,9 +1,11 @@
 package com.duelco.ui.screen;
 
 import com.duelco._enum.Screen;
+import com.duelco._enum.SoundEvent;
 import com.duelco.handlers.ImageSelection;
 import com.duelco.handlers.ScreenCaptureHandler;
 import com.duelco.managers.BingoManager;
+import com.duelco.managers.SoundManager;
 import com.duelco.managers.ToastManager;
 import com.duelco.obj.bingo.BingoCard;
 import com.duelco.ui.managers.BingoCardUIManager;
@@ -52,6 +54,7 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
         ).child(
                 Components.button(Text.translatable("buttons.jimmytools.bingo.clear_marks"),buttonComponent -> {
                     BingoManager.clearMarkers();
+                    SoundManager.playSound(SoundEvent.REMOVE_MARKER);
                     ScreenHandler.displayScreen(Screen.BINGO_CARDS_SCREEN, client);
                 }).margins(Insets.of(2))
         ).child(
@@ -59,6 +62,7 @@ public class BingoScreen extends BaseOwoScreen<FlowLayout> {
                     BingoCard newBingoCard = BingoManager.generateCard();
 
                     if (newBingoCard != null) {
+                        SoundManager.playSound(SoundEvent.GENERATE_BINGO_CARD);
                         bingoCardsLayout.child(BingoCardUIManager.buildBingoCardComponent(newBingoCard));
                     }
                 }).margins(Insets.of(2))
