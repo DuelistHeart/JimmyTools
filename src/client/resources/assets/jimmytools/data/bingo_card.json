@@ -26,9 +26,9 @@
   {"baseItem":"Warped Fungus on a Stick", "customModelDataNum": 9, "name": "Crowbar"},
   {"baseItem":"Iron Pickaxe", "customModelDataNum": 1, "name": "Dwarven Pickaxe"},
   {"baseItem":"Apple", "customModelDataNum": 80, "name": "Wine"},
-  {"baseItem":"Rabbit Foot", "customModelDataNum": 58, "name": "Ashes"},
+  {"baseItem":"Wheat", "customModelDataNum": 666, "name": "Dvil Doll"},
   {"baseItem":"Apple", "customModelDataNum": 10, "name": "Mossystone"},
-  {"baseItem":"Music Disc Cat", "customModelDataNum": 2, "name": "Rune Blade"},
-  {"baseItem":"Rabbit Foot", "customModelDataNum": 93, "name": "D20"},
+  {"baseItem":"Music Disc Cat", "customModelDataNum": 41, "name": "Rune Dagger"},
+  {"baseItem":"Rabbit Foot", "customModelDataNum": 109, "name": "D20"},
   {"baseItem":"Music Disc Cat", "customModelDataNum": 53, "name": "Scrying Orb"}
 ]

@@ -1,6 +1,7 @@
 package com.duelco.ui.screen;
 
 import com.duelco._enum.Screen;
+import com.duelco.config.ModConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 
@@ -10,6 +11,7 @@ public class ScreenHandler {
             case BINGO_CARDS_SCREEN -> client.setScreen(new BingoScreen());
             case BINGO_ITEMS_SCREEN -> client.setScreen(new BingoItemsScreen());
             case INVENTORY_SCREEN -> client.setScreen(new InventoryScreen(client.player));
+            case CONFIG_SCREEN -> client.setScreen(ModConfig.build().generateScreen(client.currentScreen));
         }
     }
 
