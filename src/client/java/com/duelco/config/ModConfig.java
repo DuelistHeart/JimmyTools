@@ -22,11 +22,22 @@ public class ModConfig {
                     .build();
 
     @SerialEntry
-    public static int bingoMaxCards = 3; // The isColor property adds a color chooser for a hexadecimal color
-    @SerialEntry()
-    public static Color bingoBackgroundColor = Color.decode("#e2d5c4"); // The isColor property adds a color chooser for a hexadecimal color
+    public static int bingoMaxCards = 3;
     @SerialEntry
-    public static Color bingoGridColor = Color.decode("#d59989"); // The isColor property adds a color chooser for a hexadecimal color
+    public static boolean isDisplayBingoNumsEnabled = true;
+    @SerialEntry
+    public static Color bingoBackgroundColor = Color.decode("#e2d5c4");
+    @SerialEntry
+    public static Color bingoGridColor = Color.decode("#d59989");
+    @SerialEntry
+    public static boolean isBingoMarkerPlaceSoundEnabled = true;
+    @SerialEntry
+    public static boolean isBingoMarkerRemoveSoundEnabled = true;
+    @SerialEntry
+    public static boolean isBingoCardClearSoundEnabled = true;
+    @SerialEntry
+    public static boolean isBingoCardGenerateSoundEnabled = true;
+
 
     @SerialEntry
     public static boolean areTransformationsEnabled = false;
@@ -56,13 +67,13 @@ public class ModConfig {
                                 .option(Option.<Color>createBuilder()
                                         .name(Text.literal("Background Color"))
                                         .description(OptionDescription.of(Text.literal("Background color of the bingo card.")))
-                                        .binding(Color.BLACK, () -> bingoBackgroundColor, newVal -> bingoBackgroundColor = newVal)
+                                        .binding(Color.decode("#e2d5c4"), () -> bingoBackgroundColor, newVal -> bingoBackgroundColor = newVal)
                                         .controller(ColorControllerBuilder::create)
                                         .build())
                                 .option(Option.<Color>createBuilder()
                                         .name(Text.literal("Grid Color"))
                                         .description(OptionDescription.of(Text.literal("Grid color of the bingo card.")))
-                                        .binding(Color.BLACK, () -> bingoGridColor, newVal -> bingoGridColor = newVal)
+                                        .binding(Color.decode("#d59989"), () -> bingoGridColor, newVal -> bingoGridColor = newVal)
                                         .controller(ColorControllerBuilder::create)
                                         .build())
                                 .build())
@@ -74,9 +85,43 @@ public class ModConfig {
                                         .description(OptionDescription.of(Text.literal("The max amount of cards that can be generated.")))
                                         .binding(3, () -> bingoMaxCards, newVal -> bingoMaxCards = newVal)
                                         .controller(integerOption -> IntegerSliderControllerBuilder.create(integerOption)
-                                                .range(1, 3)
+                                                .range(1, 50)
                                                 .step(1)
                                                 .formatValue(val -> Text.of(val + " Card(s)")))
+                                        .build())
+                                .option(Option.<Boolean>createBuilder()
+                                        .name(Text.literal("Show Bingo Card Numbers"))
+                                        .description(OptionDescription.of(Text.literal("Displays the Bingo Card # on the bingo cards.")))
+                                        .binding(false, () -> isDisplayBingoNumsEnabled, newVal -> isDisplayBingoNumsEnabled = newVal)
+                                        .controller(BooleanControllerBuilder::create)
+                                        .build())
+                                .build())
+                        .group(OptionGroup.createBuilder()
+                                .name(Text.literal("Sound Options"))
+                                .description(OptionDescription.of(Text.literal("Sound options for Bingo cards")))
+                                .option(Option.<Boolean>createBuilder()
+                                        .name(Text.literal("Enable Marker Place Sound"))
+                                        .description(OptionDescription.of(Text.literal("Determines if a sound plays when placing Bingo markers.")))
+                                        .binding(true, () -> isBingoMarkerPlaceSoundEnabled, newVal -> isBingoMarkerPlaceSoundEnabled = newVal)
+                                        .controller(BooleanControllerBuilder::create)
+                                        .build())
+                                .option(Option.<Boolean>createBuilder()
+                                        .name(Text.literal("Enable Marker Remove Sound"))
+                                        .description(OptionDescription.of(Text.literal("Determines if a sound plays when removing Bingo markers.")))
+                                        .binding(true, () -> isBingoMarkerRemoveSoundEnabled, newVal -> isBingoMarkerRemoveSoundEnabled = newVal)
+                                        .controller(BooleanControllerBuilder::create)
+                                        .build())
+                                .option(Option.<Boolean>createBuilder()
+                                        .name(Text.literal("Enable Card Clear Sound"))
+                                        .description(OptionDescription.of(Text.literal("Determines if a sound plays when clearing Bingo cards.")))
+                                        .binding(true, () -> isBingoCardClearSoundEnabled, newVal -> isBingoCardClearSoundEnabled = newVal)
+                                        .controller(BooleanControllerBuilder::create)
+                                        .build())
+                                .option(Option.<Boolean>createBuilder()
+                                        .name(Text.literal("Enable Card Generate Sound"))
+                                        .description(OptionDescription.of(Text.literal("Determines if a sound plays when generating Bingo cards.")))
+                                        .binding(true, () -> isBingoCardGenerateSoundEnabled, newVal -> isBingoCardGenerateSoundEnabled = newVal)
+                                        .controller(BooleanControllerBuilder::create)
                                         .build())
                                 .build())
                         .build())
@@ -89,7 +134,7 @@ public class ModConfig {
                                 .option(Option.<Boolean>createBuilder()
                                         .name(Text.literal("Enable LevelUp Messages"))
                                         .description(OptionDescription.of(Text.literal("Enables/Disables level up messages from appearing.")))
-                                        .binding(true, () -> areLevelUpMessagesEnabled, newVal -> areLevelUpMessagesEnabled = newVal)
+                                        .binding(false, () -> areLevelUpMessagesEnabled, newVal -> areLevelUpMessagesEnabled = newVal)
                                         .controller(BooleanControllerBuilder::create)
                                         .build())
                                 .build())
@@ -99,13 +144,13 @@ public class ModConfig {
                                 .option(Option.<Boolean>createBuilder()
                                         .name(Text.literal("Enable Names command"))
                                         .description(OptionDescription.of(Text.literal("Enables/Disables running /names on server join.")))
-                                        .binding(true, () -> startupCommandsNamesEnabled, newVal -> startupCommandsNamesEnabled = newVal)
+                                        .binding(false, () -> startupCommandsNamesEnabled, newVal -> startupCommandsNamesEnabled = newVal)
                                         .controller(BooleanControllerBuilder::create)
                                         .build())
                                 .option(Option.<NamesCmdOptions>createBuilder()
                                         .name(Text.literal("Names command option"))
                                         .description(OptionDescription.of(Text.literal("The option that is ran for /names on startup.")))
-                                        .binding(NamesCmdOptions.NAMES_OFF, () -> startupCommandsNamesOption, newVal -> startupCommandsNamesOption = newVal)
+                                        .binding(NamesCmdOptions.NAMES_CHAR, () -> startupCommandsNamesOption, newVal -> startupCommandsNamesOption = newVal)
                                         .controller(opt -> EnumControllerBuilder.create(opt)
                                                 .enumClass(NamesCmdOptions.class)
                                                 .formatValue(v -> Text.translatable("jimmytools.config.startupcommands.namesoptions." + v.name().toLowerCase())))
@@ -139,7 +184,7 @@ public class ModConfig {
                                 .option(Option.<Boolean>createBuilder()
                                         .name(Text.literal("Skin Transformed"))
                                         .description(OptionDescription.of(Text.literal("Denotes if a transformation is currently active")))
-                                        .binding(true, () -> isTransformed, newVal -> isTransformed = newVal)
+                                        .binding(false, () -> isTransformed, newVal -> isTransformed = newVal)
                                         .controller(BooleanControllerBuilder::create)
                                         .build())
                                 .build())
